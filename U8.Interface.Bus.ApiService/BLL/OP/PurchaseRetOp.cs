@@ -15,6 +15,8 @@ using U8.Interface.Bus.ApiService.Model;
 
 namespace U8.Interface.Bus.ApiService.BLL
 {
+
+
     public abstract class PurchaseRetOp : PurchaseOp
     {
         public override string SetSubId()

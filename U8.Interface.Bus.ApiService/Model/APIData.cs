@@ -8,7 +8,11 @@ namespace U8.Interface.Bus.ApiService.Model
 {
 
     /// <summary>
-    /// API实体,包括 api路径，u8 api 中的单据类型，当前任务节点信息，表头数据，表体数据
+    /// API实体:
+    /// 包括 1. api路径
+    ///      2. u8 api 中的单据类型
+    ///      3. 当前任务节点信息
+    ///      4. 表头数据，表体数据
     /// </summary>
     public  class APIData:BaseData
     { 
@@ -19,11 +23,10 @@ namespace U8.Interface.Bus.ApiService.Model
 
         public APIData(int tasktype):base(tasktype) 
         {
+
         }
 
-
-
-
+ 
         private string apiAddress;
         public string ApiAddress
         {
@@ -79,7 +82,9 @@ namespace U8.Interface.Bus.ApiService.Model
          
 
          
-
+        /// <summary>
+        /// Api生单类
+        /// </summary>
         private BLL.BaseOp op;
         public BLL.BaseOp OP
         {

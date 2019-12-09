@@ -70,6 +70,13 @@ namespace U8.Interface.Bus.ApiService.Setting
             RefreshServices();
         }
 
+
+
+        /// <summary>
+        /// 暂停服务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbPause_Click(object sender, EventArgs e)
         {
             if (dgvServices.SelectedRows.Count <= 0)
@@ -81,6 +88,8 @@ namespace U8.Interface.Bus.ApiService.Setting
             Common.SetService(ServiceOpear.Pause, Common.lstService[dgvServices.SelectedRows[0].Index].Name);
             RefreshServices();
         }
+
+
 
         private void tsbStop_Click(object sender, EventArgs e)
         {

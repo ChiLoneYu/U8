@@ -36,14 +36,38 @@ namespace U8.Interface.Bus.ApiService.BLL
         public abstract void SetApiContext(U8EnvContext envContext); 
         public abstract bool CheckAuditStatus(string strVoucherNo, string strConn);
 
-
-        //获取上一节点单据 表头 数据
+ 
+        /// <summary>
+        /// 获取上一节点单据 表头 数据
+        /// 生单表头数据
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="pdt"></param>
+        /// <param name="apidata"></param>
+        /// <returns></returns>
         public abstract DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata);
-        //获取上一节点单据 表体 数据
+ 
+        /// <summary>
+        /// 获取上一节点单据 表体 数据
+        /// 生单表体数据
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="pdt"></param>
+        /// <param name="apidata"></param>
+        /// <returns></returns>
         public abstract DataSet SetFromTabets(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata); 
 
+        /// <summary>
+        /// Invoke
+        /// </summary>
+        /// <param name="broker"></param>
+        /// <returns></returns>
         public abstract Model.DealResult BrokerInvoker(U8ApiBroker broker);
 
+
+        /// <summary>
+        /// U8 Login
+        /// </summary>
         public static U8Login.clsLogin _login;
 
         /// <summary>
@@ -70,6 +94,7 @@ namespace U8.Interface.Bus.ApiService.BLL
 
             
             System.Diagnostics.Trace.WriteLine("  before  GetU8Login 判断格式 "); 
+
             #region 判断格式  登录
             string strErr = ",请在［账套档案注册］模块中更新!";
             if (string.IsNullOrEmpty(bd.ConnectInfo.UserId))

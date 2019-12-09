@@ -6,6 +6,10 @@ using System.Data;
 
 namespace U8.Interface.Bus.WebService.Biz.Voucher
 {
+
+    /// <summary>
+    ///  恒茂?
+    /// </summary>
     public class clsPerson:Biz.Archive.clsArchiveBase
     {
 

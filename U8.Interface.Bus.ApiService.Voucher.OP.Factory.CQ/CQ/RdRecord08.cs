@@ -19,6 +19,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP.Factory.CQ
 {
     /// <summary>
     /// 其它入库单 (HY_DZ_K7_DLLReflect预置的op类)
+    /// QQ:304418200
     /// </summary>
     public class RdRecord08 : StockOP
     {

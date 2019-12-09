@@ -36,7 +36,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP.Factory.CQ
 
 
         /// <summary>
-        /// 中间表
+        /// 中间表、任务日志、任务队列
         /// </summary>
         private string taskStatusflagColName = "operflag";
         private string voucherNoColumnName = "cAVCode"; 

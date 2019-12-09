@@ -5,6 +5,8 @@ using System.Text;
 
 namespace U8.Interface.Bus.ApiService.Model
 {
+
+
     public class Functions
     {
 

@@ -12,6 +12,12 @@ using U8.Interface.Bus.DBUtility;
 
 namespace U8.Interface.Bus.WebService.Biz.Archive
 {
+
+
+    /// <summary>
+    ///  恒茂?
+    ///  基础档案
+    /// </summary>
     public class clsArchiveBase
     { 
         protected string tableName;
@@ -23,6 +29,14 @@ namespace U8.Interface.Bus.WebService.Biz.Archive
         protected UfDBUtility uf = new UfDBUtility();
 
         #region 接口方法
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="DocList"></param>
+        /// <param name="ErrMsg"></param>
+        /// <returns></returns>
         public virtual bool GetList(out string DocList, out string ErrMsg)
         {
             if (string.IsNullOrEmpty(connStr))

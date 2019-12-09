@@ -15,6 +15,11 @@ using MSXML2;
 
 namespace U8.Interface.Bus.ApiService.BLL
 {
+
+
+    /// <summary>
+    /// 销售管理
+    /// </summary>
     public abstract class SaleOp : SupplyChainOp
     {
         public override string SetSubId()

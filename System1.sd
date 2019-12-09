@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Visual Studio 生成的基于系统定义模型(SDM)的文件。-->
+<!--建议不要手动编辑此文件，这可能会导致错误。-->
+<SystemDefinitionModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="System1" Version="1.0.0.0" Culture="zh-CN" DocumentLanguage="zh-CN" xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1">
+  <Import Alias="System" Name="System" Version="1.0.60130.0" />
+  <Import Alias="MicrosoftDistributedApplication" Name="Microsoft.DistributedApplication" Version="1.0.60130.0" />
+  <Import Alias="U8InterfaceBusWebService" Name="U8InterfaceBusWebService" Version="1.0.0.0" Culture="zh-CN" />
+  <Import Alias="MicrosoftWebApplication" Name="Microsoft.WebApplication" Version="1.0.60130.0" />
+  <DesignData>
+    <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+      <ModelElement Id="cbe7840dc56249c4937fbd7339dae5ef" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.DeploymentDiagramDocument">
+        <Property Name="DocumentType" Value="ApplicationCompoundComponent" />
+        <Property Name="Version" Value="1" />
+        <Property Name="VSProjectId" Value="fe73926d-26bb-4ecd-b2c7-103f618c8f65" />
+        <Relationship Id="87b71bcda76144a89e139088389dee49" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject" Role1="@9fba6f29679d45f6a2e6a7d4d8d0f136" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject.VSProject" />
+        <ModelElement Id="9fba6f29679d45f6a2e6a7d4d8d0f136" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProject">
+          <Property Name="Name" Value="SystemDiagramDocument1" />
+          <Property Name="Guid" Value="fe73926d-26bb-4ecd-b2c7-103f618c8f65" />
+          <ModelElement Id="0ffc64a9d33e4442b21782da538c9b92" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassModelRoot">
+            <ModelElement Id="ee93ed6110604bd8a39ac9814349ad08" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespace">
+              <Property Name="CustomAttributes" Value="" />
+              <Property Name="LanguageType" Value="VisualBasic" />
+              <Relationship Id="0ffaa12cba1d497bb5953f7fab2b3d0b" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace" Role1="@0ffc64a9d33e4442b21782da538c9b92" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace.ProjectClassModelRoot" />
+            </ModelElement>
+            <Relationship Id="fdc827d29e664d8d8b4ad57d507ef72a" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot" Role1="@9fba6f29679d45f6a2e6a7d4d8d0f136" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot.VSProject" />
+          </ModelElement>
+        </ModelElement>
+        <ModelElement Id="0ce20241e3514bf5a1decf809b0ba0d8" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.DeploymentDiagram">
+          <Property Name="IsExpanded" Value="true" />
+          <Property Name="AbsoluteBounds" Value="0, 0, 11, 8.5" />
+          <Property Name="IsCompleteView" Value="true" />
+          <Property Name="DiagramId" Value="570d7048-a265-4e36-85dd-ca946665e08d" />
+          <Property Name="BaseFontName" Value="宋体" />
+          <Property Name="BaseFontSize" Value="0.125" />
+          <ModelElement Id="cf71a32e357b4b7c96a0febfb777382f" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.ApplicationCompoundComponentShape">
+            <Property Name="IsExpanded" Value="true" />
+            <Property Name="AbsoluteBounds" Value="0.2, 0.2, 7.7083333333333339, 4.4375" />
+            <Property Name="NameCache" Value="System1" />
+            <Property Name="AccessibleDescriptionCache" Value="系统" />
+            <Property Name="TypeNameCache" Value="系统" />
+            <Property Name="ThemeColorCache" Value="0,0,212" />
+            <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABKTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLk5vQm91bmRzUnVsZXMAAAAAAgAAAAs=" />
+            <Property Name="OrphanedSubjectId" Value="System1,1.0.0.0,zh-CN:System1" />
+            <Property Name="Title" Value="System1" />
+            <Property Name="Subtext" Value="System" />
+            <Property Name="SupplementalText" Value="" />
+            <Property Name="ImageResourceLocator" Value="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\DistributedApplication.emf" />
+            <Property Name="ErrorImageResourceLocator" Value="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\DistributedApplication.emf" />
+            <Property Name="ShowGlyphBar" Value="true" />
+            <ModelElement Id="d3df5d2b98534420a3c2017b58a23111" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.Diagrams.SoftwareComponentShape">
+              <Property Name="IsExpanded" Value="true" />
+              <Property Name="AbsoluteBounds" Value="1.2, 0.95, 4.75, 2" />
+              <Property Name="NameCache" Value="U8InterfaceBusWebService" />
+              <Property Name="AccessibleDescriptionCache" Value="ASP.NETWebApplication 组件形状" />
+              <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
+              <Property Name="ThemeColorCache" Value="145,137,213" />
+              <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABVTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLklubmVyQXJlYU5lc3RlZFNoYXBlUnVsZQAAAAACAAAACw==" />
+              <Property Name="OrphanedSubjectId" Value="System1,1.0.0.0,zh-CN:System1+U8InterfaceBusWebService" />
+              <Property Name="Title" Value="U8InterfaceBusWebService" />
+              <Property Name="Subtext" Value="ASP.NETWebApplication" />
+              <Property Name="SupplementalText" Value="" />
+              <Property Name="IsServiceProvider" Value="true" />
+              <Property Name="ImageResourceLocator" Value="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\WebApplication.emf" />
+              <Property Name="ErrorImageResourceLocator" Value="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\WebApplicationError.emf" />
+              <Property Name="ShowGlyphBar" Value="true" />
+              <ModelElement Id="779cb849fea74a6e85465fc889ca4033" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.Diagrams.WebServicePortShape">
+                <Property Name="IsExpanded" Value="true" />
+                <Property Name="AbsoluteBounds" Value="1.1099999999999999, 1.1375, 0.18, 0.18" />
+                <Property Name="NameCache" Value="Service" />
+                <Property Name="AccessibleDescriptionCache" Value="使用应用程序时为 .NET Web 服务提供方终结点" />
+                <Property Name="TypeNameCache" Value="使用应用程序时为 .NET Web 服务提供方终结点" />
+                <Property Name="ThemeColorCache" Value="145,137,213" />
+                <Property Name="TheBoundsRules" Value="AAEAAAD/////AQAAAAAAAAAMAgAAAHZNaWNyb3NvZnQuVmlzdWFsU3R1ZGlvLkVudGVycHJpc2VUb29scy5TZG1EZXNpZ25lcnMsIFZlcnNpb249OS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEAAABNTWljcm9zb2Z0LlZpc3VhbFN0dWRpby5FbnRlcnByaXNlVG9vbHMuU2RtLk1vZGVsaW5nLkRpYWdyYW1zLlBvcnRNb3ZlbWVudFJ1bGUBAAAACmNvcm5lclNpemUABgIAAAAzMzMzMzPDPws=" />
+                <Property Name="OrphanedSubjectId" Value="System1,1.0.0.0,zh-CN:System1+U8InterfaceBusWebService!Service" />
+                <Property Name="GeometryCache" Value="WebService" />
+                <ModelElement Id="5d8c3aa1479a4a859c033225ba3b7e5a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.Diagrams.SdmLabelShape">
+                  <Property Name="IsExpanded" Value="true" />
+                  <Property Name="AbsoluteBounds" Value="0.57216146826744074, 0.949921875, 0.4928385317325592, 0.142578125" />
+                  <Property Name="Text" Value="Service" />
+                  <Relationship Id="03655c1b50e2420b941dba54ee0b0a3d" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@779cb849fea74a6e85465fc889ca4033" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+                </ModelElement>
+                <Relationship Id="2376dda9cc8940b1bc6e12dd1a4ccb6a" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes" Role1="@d3df5d2b98534420a3c2017b58a23111" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeHasRelativeChildShapes.ParentShape" />
+                <Relationship Id="3c2e49e42a6b43d89ac3fea0de7e9928" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="System1+U8InterfaceBusWebService!Service" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+              </ModelElement>
+              <Relationship Id="8fab4f02a144493e8488194d1dcf4d35" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@cf71a32e357b4b7c96a0febfb777382f" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
+              <Relationship Id="f535fcc16027479cb5339251d681c20e" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="System1+U8InterfaceBusWebService" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+            </ModelElement>
+            <Relationship Id="ff382dc23b3149f09dccce0a133f6276" Type="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes" Role1="@0ce20241e3514bf5a1decf809b0ba0d8" RoleType1="Microsoft.VisualStudio.Modeling.Diagrams.ParentShapeContainsNestedChildShapes.ParentShape" />
+            <Relationship Id="9dc7af3f8e3a4106ab7bd7d326524418" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="System1" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+          </ModelElement>
+          <Relationship Id="754f9fb478994186b6aae713dd62d800" Type="Microsoft.VisualStudio.Modeling.SubjectHasPresentation" Role1="@cbe7840dc56249c4937fbd7339dae5ef" RoleType1="Microsoft.VisualStudio.Modeling.SubjectHasPresentation.Subject" />
+        </ModelElement>
+      </ModelElement>
+    </VisualStudio>
+  </DesignData>
+  <SystemDefinition Name="System1" Extends="MicrosoftDistributedApplication:DistributedApplication" SimulationRoot="false">
+    <DesignData>
+      <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+        <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.ApplicationCompoundComponentType" />
+      </VisualStudio>
+    </DesignData>
+    <Subsystem Name="U8InterfaceBusWebService" Definition="U8InterfaceBusWebService:U8InterfaceBusWebService" MinOccurs="1" MaxOccurs="1" Reference="true">
+      <DesignData>
+        <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+          <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.AspComponent">
+            <Property Name="AbstractComponentTypeId" Value="Microsoft.WebApplication,1.0.60130.0:WebApplication" />
+            <Property Name="TypeNameCache" Value="ASP.NETWebApplication" />
+            <ModelElement Id="222689c7e6b34af78e0860e34b42bf3e" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WebServiceProviderComponentPort">
+              <Property Name="Name" Value="Service" />
+              <Property Name="AbstractPortTypeIdCache" Value="Microsoft.Web,1.0.60130.0:WebService" />
+              <Property Name="PortId" Value="U8InterfaceBusWebService,1.0.0.0,zh-CN:U8InterfaceBusWebService+Service" />
+              <ModelElement Id="1f17a5b8f38d46b6b8717c14fbda6ec2" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SettingsValues">
+                <Relationship Id="0a87a73f40b249deb4cf394e99b2be52" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues" Role1="@222689c7e6b34af78e0860e34b42bf3e" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.SdmMemberUseContainsSettingsValues.SdmMemberUse" />
+              </ModelElement>
+            </ModelElement>
+            <Relationship Id="c2a29544879e484bb196aec8d53c5a1a" Type="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort" Role1="@222689c7e6b34af78e0860e34b42bf3e" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Sdm.Modeling.ComponentContainsComponentPort.ComponentPorts" />
+          </ModelElement>
+        </VisualStudio>
+      </DesignData>
+    </Subsystem>
+    <Containment Name="U8InterfaceBusWebServiceContainment" Definition="MicrosoftWebApplication:DistributedApplicationContainsWebApplication" ChildMember="U8InterfaceBusWebService" />
+  </SystemDefinition>
+</SystemDefinitionModel>

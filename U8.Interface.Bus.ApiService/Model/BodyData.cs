@@ -6,6 +6,10 @@ using System.Text;
 
 namespace U8.Interface.Bus.ApiService.Model
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class BodyRow
     {
         private List<Model.U8NameValue>  bodycols = new List<U8NameValue>();

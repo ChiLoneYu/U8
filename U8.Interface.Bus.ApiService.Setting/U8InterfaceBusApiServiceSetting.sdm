@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Visual Studio 生成的基于系统定义模型(SDM)的文件。-->
+<!--建议不要手动编辑此文件，这可能会导致错误。-->
+<SystemDefinitionModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="U8InterfaceBusApiServiceSetting" Version="1.0.0.0" Culture="zh-CN" DocumentLanguage="zh-CN" xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1">
+  <Import Alias="System" Name="System" Version="1.0.60130.0" />
+  <Import Alias="MicrosoftConfiguration" Name="Microsoft.Configuration" Version="1.0.60130.0" />
+  <Import Alias="MicrosoftFileSystem" Name="Microsoft.FileSystem" Version="1.0.60130.0" />
+  <Import Alias="MicrosoftWindowsApplication" Name="Microsoft.WindowsApplication" Version="1.0.60130.0" />
+  <DesignData>
+    <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+      <ModelElement Id="c56eaf05d749442282e777dae018e33b" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocument">
+        <Property Name="Version" Value="1" />
+        <Property Name="VSProjectId" Value="ac89547b-0702-4391-9525-2dbe04ecdca5" />
+        <Relationship Id="e54aa8b7e9e8438d8101f048ee7261c4" Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject" Role1="@2d0b949ae33042638dc50bd470591378" RoleType1="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.SoftwareComponentDocumentAffiliatedWithVSProject.VSProject" />
+        <ModelElement Id="2d0b949ae33042638dc50bd470591378" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProject">
+          <Property Name="Name" Value="U8.Interface.Bus.ApiService.Setting" />
+          <Property Name="Guid" Value="ac89547b-0702-4391-9525-2dbe04ecdca5" />
+          <Property Name="Location" Value="C:\Documents and Settings\Administrator\桌面\车桥\moniterniu_github\u8\U8.Interface.Bus.ApiService.Setting\" />
+          <Property Name="Language" Value="c#" />
+          <Property Name="IsImplemented" Value="true" />
+          <Property Name="BuildOutputPath" Value="..\..\..\..\..\..\..\U8SOFT\HY\client\HY_ME_SVR\WinService\" />
+          <Property Name="ProjectType" Value="Executable" />
+          <ModelElement Id="b9e55f5fabc64cb3b1b09ad49c7b41b1" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassModelRoot">
+            <ModelElement Id="116afb65d5874f3aa2c62fecb66cc748" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.RootNamespace">
+              <Property Name="CustomAttributes" Value="" />
+              <Property Name="LanguageType" Value="CSharp" />
+              <Relationship Id="b7d4b8f8167f4b7b895f786765f884b8" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace" Role1="@b9e55f5fabc64cb3b1b09ad49c7b41b1" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Clr.ProjectClassRootContainsNamespace.ProjectClassModelRoot" />
+            </ModelElement>
+            <Relationship Id="3d40dcbfe0f44882b3dfbdec9d6676c0" Type="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot" Role1="@2d0b949ae33042638dc50bd470591378" RoleType1="Microsoft.VisualStudio.EnterpriseTools.ArtifactModel.Project.VSProjectContainsClassModelRoot.VSProject" />
+          </ModelElement>
+        </ModelElement>
+      </ModelElement>
+    </VisualStudio>
+  </DesignData>
+  <SystemDefinition Name="U8InterfaceBusApiServiceSetting" Extends="MicrosoftWindowsApplication:WindowsApplication" SimulationRoot="false">
+    <DesignData>
+      <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+        <ModelElement Type="Microsoft.VisualStudio.EnterpriseTools.Application.Modeling.PlugIns.WindowsComponentType">
+          <Property Name="State" Value="Implemented" />
+          <Property Name="Project" Value="U8.Interface.Bus.ApiService.Setting" />
+          <Property Name="CachedLanguage" Value="c#" />
+        </ModelElement>
+      </VisualStudio>
+    </DesignData>
+    <ResourceDefinition Name="Directory" Extends="MicrosoftFileSystem:Directory">
+      <ResourceDefinition Name="Configuration" Extends="MicrosoftConfiguration:Configuration">
+        <ResourceDefinition Name="TransactionsSectionGroup" Extends="MicrosoftConfiguration:TransactionsSectionGroup" />
+        <ResourceDefinition Name="SerializationSectionGroup" Extends="MicrosoftConfiguration:SerializationSectionGroup" />
+        <ResourceDefinition Name="SystemWebSectionGroup" Extends="MicrosoftConfiguration:SystemWebSectionGroup">
+          <ResourceDefinition Name="SystemWebCachingSectionGroup" Extends="MicrosoftConfiguration:SystemWebCachingSectionGroup" />
+          <ResourceDefinition Name="RoleManagerSection" Extends="MicrosoftConfiguration:RoleManagerSection">
+            <SettingValue Path="Domain" Null="true" Fixed="false" />
+            <SettingValue Path="CookieName" Fixed="false">.ASPXROLES</SettingValue>
+            <SettingValue Path="CreatePersistentCookie" Fixed="false">false</SettingValue>
+            <SettingValue Path="MaxCachedResults" Fixed="false">25</SettingValue>
+            <SettingValue Path="CacheRolesInCookie" Fixed="false">false</SettingValue>
+            <SettingValue Path="DefaultProvider" Fixed="false">ClientRoleProvider</SettingValue>
+            <SettingValue Path="Enabled" Fixed="false">true</SettingValue>
+            <SettingValue Path="CookiePath" Fixed="false">/</SettingValue>
+            <SettingValue Path="CookieSlidingExpiration" Fixed="false">true</SettingValue>
+            <SettingValue Path="CookieTimeout" Fixed="false">00:30:00</SettingValue>
+            <SettingValue Path="CookieProtection" Fixed="false">All</SettingValue>
+            <SettingValue Path="CookieRequireSSL" Fixed="false">false</SettingValue>
+            <ResourceDefinition Name="ProviderSettings" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetSqlRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">connectionStringName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">LocalSqlServer</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <ResourceDefinition Name="ProviderSettings1" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetWindowsTokenRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.WindowsTokenRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <ResourceDefinition Name="ProviderSettings2" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">ClientRoleProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">serviceUri</Name>
+                  <Value xmlns="http://Microsoft.Configuration">
+                  </Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">cacheTimeout</Name>
+                  <Value xmlns="http://Microsoft.Configuration">86400</Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <Resource Name="ProviderSettings" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings" />
+            <Resource Name="ProviderSettings1" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings1" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettings1Containment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings1" />
+            <Resource Name="ProviderSettings2" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection.ProviderSettings2" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettings2Containment" Definition="MicrosoftConfiguration:RoleManagerSectionContainsProviderSettings" ChildMember="ProviderSettings2" />
+          </ResourceDefinition>
+          <ResourceDefinition Name="MembershipSection" Extends="MicrosoftConfiguration:MembershipSection">
+            <SettingValue Path="DefaultProvider" Fixed="false">ClientAuthenticationMembershipProvider</SettingValue>
+            <SettingValue Path="HashAlgorithmType" Fixed="false" />
+            <SettingValue Path="UserIsOnlineTimeWindow" Fixed="false">00:15:00</SettingValue>
+            <ResourceDefinition Name="ProviderSettings" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">AspNetSqlMembershipProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.Security.SqlMembershipProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">connectionStringName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">LocalSqlServer</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">enablePasswordRetrieval</Name>
+                  <Value xmlns="http://Microsoft.Configuration">false</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">enablePasswordReset</Name>
+                  <Value xmlns="http://Microsoft.Configuration">true</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">requiresQuestionAndAnswer</Name>
+                  <Value xmlns="http://Microsoft.Configuration">true</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">applicationName</Name>
+                  <Value xmlns="http://Microsoft.Configuration">/</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">requiresUniqueEmail</Name>
+                  <Value xmlns="http://Microsoft.Configuration">false</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">passwordFormat</Name>
+                  <Value xmlns="http://Microsoft.Configuration">Hashed</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">maxInvalidPasswordAttempts</Name>
+                  <Value xmlns="http://Microsoft.Configuration">5</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">minRequiredPasswordLength</Name>
+                  <Value xmlns="http://Microsoft.Configuration">7</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">minRequiredNonalphanumericCharacters</Name>
+                  <Value xmlns="http://Microsoft.Configuration">1</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">passwordAttemptWindow</Name>
+                  <Value xmlns="http://Microsoft.Configuration">10</Value>
+                </Value>
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">passwordStrengthRegularExpression</Name>
+                  <Value xmlns="http://Microsoft.Configuration">
+                  </Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <ResourceDefinition Name="ProviderSettings1" Extends="MicrosoftConfiguration:ProviderSettings">
+              <SettingValue Path="Name" Fixed="false">ClientAuthenticationMembershipProvider</SettingValue>
+              <SettingValue Path="Type" Fixed="false">System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</SettingValue>
+              <SettingValueList Path="Parameters" Fixed="false">
+                <Value>
+                  <Name xmlns="http://Microsoft.Configuration">serviceUri</Name>
+                  <Value xmlns="http://Microsoft.Configuration">
+                  </Value>
+                </Value>
+              </SettingValueList>
+            </ResourceDefinition>
+            <Resource Name="ProviderSettings" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.MembershipSection.ProviderSettings" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettingsContainment" Definition="MicrosoftConfiguration:MembershipSectionContainsProviderSettings" ChildMember="ProviderSettings" />
+            <Resource Name="ProviderSettings1" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.MembershipSection.ProviderSettings1" MinOccurs="1" MaxOccurs="1" Reference="false">
+              <DesignData>
+                <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                  <ModelElement>
+                    <Property Name="DisplayName" Value="ProviderSettings" />
+                    <Property Name="CreatedByUser" Value="true" />
+                  </ModelElement>
+                </VisualStudio>
+              </DesignData>
+            </Resource>
+            <Containment Name="ProviderSettings1Containment" Definition="MicrosoftConfiguration:MembershipSectionContainsProviderSettings" ChildMember="ProviderSettings1" />
+          </ResourceDefinition>
+          <Resource Name="SystemWebCachingSectionGroup" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.SystemWebCachingSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="SystemWebCachingSectionGroup" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="SystemWebCachingSectionGroupContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsSystemWebCachingSectionGroup" ChildMember="SystemWebCachingSectionGroup" />
+          <Resource Name="RoleManagerSection" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.RoleManagerSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="RoleManagerSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="RoleManagerSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsRoleManagerSection" ChildMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings" HostMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings1" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings1" HostMember="RoleManagerSection" />
+          <Hosting Name="RoleManagerSectionHostsProviderSettings2" Definition="MicrosoftConfiguration:RoleManagerSectionHostsProviderSettings" GuestMember="RoleManagerSection.ProviderSettings2" HostMember="RoleManagerSection" />
+          <Resource Name="MembershipSection" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup.MembershipSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="MembershipSection" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="MembershipSectionContainment" Definition="MicrosoftConfiguration:SystemWebSectionGroupContainsMembershipSection" ChildMember="MembershipSection" />
+          <Hosting Name="MembershipSectionHostsProviderSettings" Definition="MicrosoftConfiguration:MembershipSectionHostsProviderSettings" GuestMember="MembershipSection.ProviderSettings" HostMember="MembershipSection" />
+          <Hosting Name="MembershipSectionHostsProviderSettings1" Definition="MicrosoftConfiguration:MembershipSectionHostsProviderSettings" GuestMember="MembershipSection.ProviderSettings1" HostMember="MembershipSection" />
+        </ResourceDefinition>
+        <ResourceDefinition Name="NetSectionGroup" Extends="MicrosoftConfiguration:NetSectionGroup">
+          <ResourceDefinition Name="MailSettingsSectionGroup" Extends="MicrosoftConfiguration:MailSettingsSectionGroup" />
+          <Resource Name="MailSettingsSectionGroup" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.NetSectionGroup.MailSettingsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+            <DesignData>
+              <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+                <ModelElement>
+                  <Property Name="DisplayName" Value="MailSettingsSectionGroup" />
+                  <Property Name="CreatedByUser" Value="true" />
+                </ModelElement>
+              </VisualStudio>
+            </DesignData>
+          </Resource>
+          <Containment Name="MailSettingsSectionGroupContainment" Definition="MicrosoftConfiguration:NetSectionGroupContainsMailSettingsSectionGroup" ChildMember="MailSettingsSectionGroup" />
+        </ResourceDefinition>
+        <ResourceDefinition Name="AppSettingsSection" Extends="MicrosoftConfiguration:AppSettingsSection">
+          <SettingValueList Path="Settings" Fixed="false">
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">ConnectionString</Key>
+              <Value xmlns="http://Microsoft.Configuration">Data Source=.;Initial Catalog=U8Service;Integrated Security=True</Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">ClientSettingsProvider.ServiceUri</Key>
+              <Value xmlns="http://Microsoft.Configuration">
+              </Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">u8server</Key>
+              <Value xmlns="http://Microsoft.Configuration">vincent-U8V121</Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">u8acccode</Key>
+              <Value xmlns="http://Microsoft.Configuration">888</Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">u8user</Key>
+              <Value xmlns="http://Microsoft.Configuration">demo</Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">u8pwd</Key>
+              <Value xmlns="http://Microsoft.Configuration">
+              </Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">dbserver</Key>
+              <Value xmlns="http://Microsoft.Configuration">vincent-U8V121</Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">dbcatalogname</Key>
+              <Value xmlns="http://Microsoft.Configuration">UFDATA_888_2015</Value>
+            </Value>
+            <Value>
+              <Key xmlns="http://Microsoft.Configuration">dbpwd</Key>
+              <Value xmlns="http://Microsoft.Configuration">12345679a</Value>
+            </Value>
+          </SettingValueList>
+          <SettingValue Path="File" Fixed="false" />
+        </ResourceDefinition>
+        <Resource Name="TransactionsSectionGroup" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.TransactionsSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="TransactionsSectionGroup" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="TransactionsSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsTransactionsSectionGroup" ChildMember="TransactionsSectionGroup" />
+        <Resource Name="SerializationSectionGroup" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SerializationSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="SerializationSectionGroup" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="SerializationSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSerializationSectionGroup" ChildMember="SerializationSectionGroup" />
+        <Resource Name="SystemWebSectionGroup" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.SystemWebSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="SystemWebSectionGroup" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="SystemWebSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsSystemWebSectionGroup" ChildMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsSystemWebCachingSectionGroup" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsSystemWebCachingSectionGroup" GuestMember="SystemWebSectionGroup.SystemWebCachingSectionGroup" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsRoleManagerSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsRoleManagerSection" GuestMember="SystemWebSectionGroup.RoleManagerSection" HostMember="SystemWebSectionGroup" />
+        <Hosting Name="SystemWebSectionGroupHostsMembershipSection" Definition="MicrosoftConfiguration:SystemWebSectionGroupHostsMembershipSection" GuestMember="SystemWebSectionGroup.MembershipSection" HostMember="SystemWebSectionGroup" />
+        <Resource Name="NetSectionGroup" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.NetSectionGroup" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="NetSectionGroup" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="NetSectionGroupContainment" Definition="MicrosoftConfiguration:ConfigurationContainsNetSectionGroup" ChildMember="NetSectionGroup" />
+        <Hosting Name="NetSectionGroupHostsMailSettingsSectionGroup" Definition="MicrosoftConfiguration:NetSectionGroupHostsMailSettingsSectionGroup" GuestMember="NetSectionGroup.MailSettingsSectionGroup" HostMember="NetSectionGroup" />
+        <Resource Name="AppSettingsSection" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration.AppSettingsSection" MinOccurs="1" MaxOccurs="1" Reference="false">
+          <DesignData>
+            <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+              <ModelElement>
+                <Property Name="DisplayName" Value="AppSettingsSection" />
+                <Property Name="CreatedByUser" Value="true" />
+              </ModelElement>
+            </VisualStudio>
+          </DesignData>
+        </Resource>
+        <Containment Name="AppSettingsSectionContainment" Definition="MicrosoftConfiguration:ConfigurationContainsAppSettingsSection" ChildMember="AppSettingsSection" />
+      </ResourceDefinition>
+      <Resource Name="Configuration" Definition="U8InterfaceBusApiServiceSetting.Directory.Configuration" MinOccurs="1" MaxOccurs="1" Reference="false">
+        <DesignData>
+          <VisualStudio xmlns="http://schemas.microsoft.com/SystemDefinitionModel/2005/1/DesignData/VisualStudio">
+            <ModelElement>
+              <Property Name="DisplayName" Value="Configuration" />
+            </ModelElement>
+          </VisualStudio>
+        </DesignData>
+      </Resource>
+      <Containment Name="ConfigurationContainment" Definition="MicrosoftFileSystem:DirectoryContainsFile" ChildMember="Configuration" />
+      <Hosting Name="ConfigurationHostsTransactionsSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsTransactionsSectionGroup" GuestMember="Configuration.TransactionsSectionGroup" HostMember="Configuration" />
+      <Hosting Name="ConfigurationHostsSerializationSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSerializationSectionGroup" GuestMember="Configuration.SerializationSectionGroup" HostMember="Configuration" />
+      <Hosting Name="ConfigurationHostsSystemWebSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsSystemWebSectionGroup" GuestMember="Configuration.SystemWebSectionGroup" HostMember="Configuration" />
+      <Hosting Name="ConfigurationHostsNetSectionGroup" Definition="MicrosoftConfiguration:ConfigurationHostsNetSectionGroup" GuestMember="Configuration.NetSectionGroup" HostMember="Configuration" />
+      <Hosting Name="ConfigurationHostsAppSettingsSection" Definition="MicrosoftConfiguration:ConfigurationHostsAppSettingsSection" GuestMember="Configuration.AppSettingsSection" HostMember="Configuration" />
+    </ResourceDefinition>
+    <Resource Name="Directory" Definition="U8InterfaceBusApiServiceSetting.Directory" MinOccurs="1" MaxOccurs="1" Reference="false" />
+    <Containment Name="DirectoryContainment" Definition="MicrosoftWindowsApplication:WindowsApplicationContainsDirectory" ChildMember="Directory" />
+    <Hosting Name="DirectoryHostsConfiguration" Definition="MicrosoftFileSystem:DirectoryHostsFile" GuestMember="Directory.Configuration" HostMember="Directory" />
+  </SystemDefinition>
+</SystemDefinitionModel>

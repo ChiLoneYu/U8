@@ -20,7 +20,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP.Factory.CQ
     /// <summary>
     /// 盘点单(HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class CheckVouch : StockOP
+    public class CheckVouch : OP.CheckVouch
     {
 
         private int tasktype = 0;

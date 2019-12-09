@@ -5,7 +5,10 @@ using System.Text;
 
 namespace U8.Interface.Bus.ApiService.Model
 {
- public   class Function
+
+
+
+    public class Function
     {
 
         /// <summary>
@@ -97,7 +100,7 @@ namespace U8.Interface.Bus.ApiService.Model
         {
             get { return accid; }
             set { accid = value; }
-        }        
-		   
+        }
+
     }
 }

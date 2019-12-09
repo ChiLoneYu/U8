@@ -18,7 +18,7 @@ namespace U8.Interface.Bus.ApiService.BLL
 {
  
     /// <summary>
-    /// 供应链单据API操作工厂类
+    /// 生产制造、车间管理  API操作工厂类
     /// </summary> 
     public abstract class SfcOp :APIOp
     {
@@ -26,9 +26,7 @@ namespace U8.Interface.Bus.ApiService.BLL
         {
             return "AS";
         }
-
-
-
+  
         /// <summary>
         /// 子表
         /// </summary>

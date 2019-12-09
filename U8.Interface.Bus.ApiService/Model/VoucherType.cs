@@ -5,6 +5,11 @@ using System.Text;
 
 namespace U8.Interface.Bus.ApiService.Model
 {
+
+    /// <summary>
+    /// 
+    /// 源单据  目标单据-> 对应操作类
+    /// </summary>
     public class VoucherType
     {
 

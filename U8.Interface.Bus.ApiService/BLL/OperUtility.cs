@@ -9,6 +9,11 @@ using U8.Interface.Bus.ApiService.Model;
 
 namespace U8.Interface.Bus.ApiService.BLL
 {
+
+
+    /// <summary>
+    /// 任务队列调度
+    /// </summary>
     public class TaskOperator
     {
         /// <summary>
@@ -57,9 +62,7 @@ namespace U8.Interface.Bus.ApiService.BLL
             return mtasklist;
         }
 
-
-
-
+ 
         /// <summary>
         /// 多线程 入口函数
         /// </summary>
@@ -79,6 +82,7 @@ namespace U8.Interface.Bus.ApiService.BLL
 
         /// <summary>
         /// XTLibrary 入口函数
+        /// 通过任务主表获取需要执行的任务并执行任务
         /// </summary>
         /// <param name="log"></param>
         /// <returns></returns>

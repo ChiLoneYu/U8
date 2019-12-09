@@ -8,13 +8,17 @@ namespace U8.Interface.Bus.ApiService.Model
 
     /// <summary>
     /// HY_DZ_K7_DLLReflect 中预置的 Data类信息
-    /// 包括:连接信息，当前任务结点信息，第一任务节点信息，是否删除标识
+    /// 包括: 1. 连接信息
+    ///       2. 当前任务结点信息
+    ///       3. 第一任务节点信息
+    ///       4. 是否删除标识
     /// </summary>
     public class BaseData
     {
 
         public BaseData()
         { 
+
         }
 
         public BaseData(int tasktype)
@@ -24,25 +28,28 @@ namespace U8.Interface.Bus.ApiService.Model
 
 
 
-        private ConnectInfo connectInfo;
-
+        private ConnectInfo connectInfo; 
         public ConnectInfo ConnectInfo
         {
             get { return connectInfo; }
             set { connectInfo = value; }
         }
 
-
-        private Model.Synergismlogdt synergismlogdt;
-
+        /// <summary>
+        /// 任务子表实体
+        /// </summary>
+        private Model.Synergismlogdt synergismlogdt; 
         public Model.Synergismlogdt Synergismlogdt
         {
             get { return synergismlogdt; }
             set { synergismlogdt = value; }
         }
 
-        private Model.Synergismlogdt fristsynergismlogdt;
 
+        /// <summary>
+        /// 第一子任务
+        /// </summary>
+        private Model.Synergismlogdt fristsynergismlogdt; 
         public Model.Synergismlogdt Fristsynergismlogdt
         {
             get { return fristsynergismlogdt; }
@@ -62,8 +69,7 @@ namespace U8.Interface.Bus.ApiService.Model
         }
 
 
-        private string orderPrefix;
-
+        private string orderPrefix; 
         public string OrderPrefix
         {
             get { return orderPrefix; }

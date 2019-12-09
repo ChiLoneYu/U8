@@ -5,6 +5,11 @@ using System.Text;
 
 namespace U8.Interface.Bus.WebService.Biz.Archive
 {
+
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class clsSfc_moroutingdetail:clsArchiveBase
     { 
         public clsSfc_moroutingdetail()

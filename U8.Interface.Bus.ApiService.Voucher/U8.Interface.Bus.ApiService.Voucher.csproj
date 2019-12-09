@@ -46,21 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\Common.cs" />
-    <Compile Include="DAL\CQ\Mom_order.cs" />
-    <Compile Include="DAL\XT\Rdrecord01.cs" />
-    <Compile Include="DAL\XT\Rdrecord32.cs" />
-    <Compile Include="BLL\OP\XT\Consignment.cs" />
-    <Compile Include="BLL\OP\XT\PO_Pomain.cs" />
-    <Compile Include="BLL\OP\XT\PuStoreIn.cs" />
-    <Compile Include="BLL\OP\XT\PU_AppVouch.cs" />
-    <Compile Include="BLL\OP\XT\PU_ArrivalVouch.cs" />
-    <Compile Include="BLL\OP\XT\RdRecord08.cs" />
-    <Compile Include="BLL\OP\XT\RdRecord09.cs" />
-    <Compile Include="BLL\OP\XT\ReturnOrder.cs" />
-    <Compile Include="BLL\OP\XT\SaleOrder.cs" />
-    <Compile Include="BLL\OP\XT\SalesOutStockOrder.cs" />
-    <Compile Include="BLL\OP\XT\TransVouch.cs" />
+    <Compile Include="OP\CheckVouch.cs" />
+    <Compile Include="OP\Consignment.cs" />
+    <Compile Include="OP\PO_Pomain.cs" />
+    <Compile Include="OP\PuStoreIn.cs" />
+    <Compile Include="DAL\Common.cs" />
+    <Compile Include="DAL\Mom_order.cs" />
+    <Compile Include="DAL\Rdrecord01.cs" />
+    <Compile Include="DAL\Rdrecord32.cs" />
+    <Compile Include="OP\PU_ArrivalVouch.cs" />
+    <Compile Include="OP\SaleOrder.cs" />
+    <Compile Include="OP\SalesOutStockOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

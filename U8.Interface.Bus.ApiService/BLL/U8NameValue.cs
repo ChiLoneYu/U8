@@ -14,10 +14,10 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// 设置表头字段值
         /// </summary>
         /// <param name="apidata"></param>
-        /// <param name="rdds"></param>
-        /// <param name="rdsds"></param>
-        /// <param name="listfd"></param>
-        /// <param name="dt"></param>
+        /// <param name="rdds">表头数据</param>
+        /// <param name="rdsds">表体数据</param>
+        /// <param name="listfd">字段对照列表</param>
+        /// <param name="dt">任务日志</param>
         public void SetHeadData(Model.APIData apidata, DataSet rdds, DataSet rdsds, List<Model.Fieldcmps> listfd, Model.Synergismlogdt dt)
         {
             //赋植
@@ -138,7 +138,7 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// <param name="rdds">上一节点表头信息</param>
         /// <param name="rdsds">上一节点表体信息</param>
         /// <param name="listfd">fieldcmps字段对照信息</param>
-        /// <param name="dt"></param>
+        /// <param name="dt">任务日志</param>
         public void SetBodyData(Model.APIData apidata, System.Data.DataSet rdds, System.Data.DataSet rdsds, List<Model.Fieldcmps> listfd, Model.Synergismlogdt dt)
         { 
             //赋值

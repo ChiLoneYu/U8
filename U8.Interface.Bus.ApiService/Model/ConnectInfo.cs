@@ -18,6 +18,7 @@ namespace U8.Interface.Bus.ApiService.Model
             get { return subId; }
             set { subId = value; }
         }
+
         string userId;
         /// <summary>
         /// 登陆用户
@@ -27,6 +28,7 @@ namespace U8.Interface.Bus.ApiService.Model
             get { return userId; }
             set { userId = value; }
         }
+
         string source;
         /// <summary>
         /// 数据源
@@ -46,6 +48,7 @@ namespace U8.Interface.Bus.ApiService.Model
             get { return accId; }
             set { accId = value; }
         }
+
         string yearId;
         /// <summary>
         /// 登陆年度
@@ -55,6 +58,7 @@ namespace U8.Interface.Bus.ApiService.Model
             get { return yearId; }
             set { yearId = value; }
         }
+
         string password;
         /// <summary>
         /// 登陆密码
@@ -64,6 +68,7 @@ namespace U8.Interface.Bus.ApiService.Model
             get { return password; }
             set { password = value; }
         }
+
         string date;
         /// <summary>
         /// 登陆日期

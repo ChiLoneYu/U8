@@ -197,6 +197,7 @@
     <Content Include="Resources\UI1.jpg" />
     <Content Include="Resources\UI2.jpg" />
     <Content Include="Resources\UI3.jpg" />
+    <Content Include="U8InterfaceBusApiServiceSetting.sdm" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\U8.Interface.Bus.ApiService\U8.Interface.Bus.ApiService.csproj">

@@ -14,6 +14,11 @@ using U8.Interface.Bus.ApiService.Model;
 
 namespace U8.Interface.Bus.ApiService.BLL
 {
+
+
+    /// <summary>
+    /// 库存管理
+    /// </summary>
     public abstract class StockOP : SupplyChainOp
     {
 

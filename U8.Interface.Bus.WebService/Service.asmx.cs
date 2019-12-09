@@ -300,7 +300,7 @@ namespace U8.Interface.Bus.WebService
 
 
         /// <summary>
-        /// 上传接口
+        /// 上传接口:写中间表
         /// </summary>
         /// <param name="connstr">U8数据库连接串</param>
         /// <param name="ArchType">档案类型</param>

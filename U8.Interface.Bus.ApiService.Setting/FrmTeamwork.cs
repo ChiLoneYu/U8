@@ -151,10 +151,19 @@ namespace U8.Interface.Bus.ApiService.Setting
             OutPut2Excel();
         }
 
+
+
+        /// <summary>
+        /// 单条执行
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDebug_Click(object sender, EventArgs e)
         {
             Exec_Task();
         }
+
+
 
         private void Exec_Cor(object sender, EventArgs e)
         {
@@ -187,7 +196,7 @@ namespace U8.Interface.Bus.ApiService.Setting
 
 
         /// <summary>
-        /// 
+        /// 执行任务
         /// </summary>
         private void Exec_Task()
         {

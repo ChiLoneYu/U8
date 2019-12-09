@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service.asmx" />
+    <Content Include="U8InterfaceBusWebService.sdm" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

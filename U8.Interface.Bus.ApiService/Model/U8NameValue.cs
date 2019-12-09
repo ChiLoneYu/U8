@@ -5,8 +5,9 @@ using System.Text;
 
 namespace U8.Interface.Bus.ApiService.Model
 {
+
     /// <summary>
-    /// 
+    /// 单据字段实体
     /// </summary>
     public class U8NameValue
     {

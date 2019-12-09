@@ -15,6 +15,11 @@ using U8.Interface.Bus.ApiService.Model;
 
 namespace U8.Interface.Bus.ApiService.BLL
 {
+
+
+    /// <summary>
+    /// 采购管理
+    /// </summary>
     public abstract class PurchaseOp : SupplyChainOp
     {
         public override string SetSubId()
@@ -33,10 +38,7 @@ namespace U8.Interface.Bus.ApiService.BLL
 
         }
 
-
-
-
-
+  
         public override Model.DealResult BrokerInvoker(UFIDA.U8.U8APIFramework.U8ApiBroker broker)
         {
             Model.DealResult dr = new Model.DealResult();
@@ -294,11 +296,15 @@ namespace U8.Interface.Bus.ApiService.BLL
 
         }
 
-
-
-
-
-
+ 
+        /// <summary>
+        /// 加载
+        /// </summary>
+        /// <param name="bd"></param>
+        /// <param name="dt"></param>
+        /// <param name="domHead"></param>
+        /// <param name="domBody"></param>
+        /// <returns></returns>
         public override Model.DealResult LoadVouch(Model.APIData bd, Model.Synergismlogdt dt, out BusinessObject domHead, out BusinessObject domBody)
         {
             domHead = null;
@@ -376,6 +382,14 @@ namespace U8.Interface.Bus.ApiService.BLL
             return dr;
         }
 
+
+
+        /// <summary>
+        /// 弃审
+        /// </summary>
+        /// <param name="bd"></param>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public override Model.DealResult CancelAudit(Model.APIData bd, Model.Synergismlogdt dt)
         {
             Model.DealResult dr=new Model.DealResult();
