@@ -70,32 +70,148 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// <returns></returns>
         private DealResult MakeLogDT(string vouchtype, DataSet dsHead, DataSet dsBody, Synergismlog log, DealResult dr, BLL.TaskLog.ITaskLogDetail logdtbll, BLL.TaskLog.ITaskLogMain logbll, Model.Synergismlogdt fdt, List<Model.Synergismlogdt> listnext)
         {
-            #region 组织op
+            for (int i = 0; i <  listnext.Count; i++)
+            {
 
-            APIOp op = (APIOp)ClassFactory.GetBaseOp(vouchtype, tasktype);
-            BaseData bd = ClassFactory.GetBaseData(vouchtype, tasktype);
-            op.dsHead = dsHead;
-            op.dsBody = dsBody;
-            #endregion
+                Synergismlogdt preDt;
+                Model.Synergismlogdt nextdt = listnext[i];
+ 
+                ////处理数据开始 
+                try
+                {
+
+                    #region 组织op
+
+                    BaseData bd = ClassFactory.GetBaseData(nextdt);
+                    bd.Fristsynergismlogdt = fdt;
+                    bd.Synergismlogdt = nextdt;
+
+                    APIOp op = (APIOp)ClassFactory.GetBaseOp(nextdt);
+                    nextdt.OP = op;
+
+                    op.dsHead = dsHead;
+                    op.dsBody = dsBody;
+
+                    preDt = logdtbll.GetPrevious(nextdt, nextdt.OP);
+                    if (op == null)
+                    {
+                        throw new Exception("插件安装错误");
+                    }
+
+                    if (nextdt.Cdealmothed == 3)  //删除
+                    {
+                        TaskOperator t = new TaskOperator();
+                        return t.DeleteVouch(0, nextdt);
+                    }
+                    else if (nextdt.Cdealmothed == 2)  //修改
+                    {
+
+                    }
+                    #endregion
+
+                    dr = op.MakeData(nextdt, bd);
+
+                    #region 调用并接收返回值
 
 
-            #region 调用并接收返回值
+                    string ccode;
+                    if (nextdt.Cstatus != DAL.Constant.SynergisnLogDT_Cstatus_NoAudit)
+                    {
+                        if (nextdt.Cdealmothed == 2)
+                        {
+                            dr = op.MakeUpdate(bd);
+                            return dr;
+                        }
 
-            Synergismlogdt dt = op.GetModel("");
-            dr = op.MakeData(dt, bd);
-            dr = op.MakeVouch(bd);
-            string ccode = op.GetCodeorID(dr.VouchIdRet, bd, "code");
+                        System.Diagnostics.Trace.WriteLine("  before MakeVouch  ");
+                        dr = op.MakeVouch(bd);  //生单、档案协同 
+                        System.Diagnostics.Trace.WriteLine("  after MakeVouch  ");
 
-            #endregion
+                        if (dr.ResultNum == DAL.Constant.ResultNum_NormalError)
+                        {
+                            throw new Exception("API错误：" + dr.ResultMsg);
+                        }
 
-            #region 写日志
+                        ccode = op.GetCodeorID(dr.VouchIdRet, bd, "code");
 
-            //nextdt.Cstatus = DAL.Constant.SynergisnLogDT_Cstatus_NoAudit;
-            //nextdt.Dmaketime = DateTime.Now;
-            //nextdt.Cvoucherno = ccode;
-            //logdtbll.Update(nextdt, nextdt.OP);
+                        nextdt.Cstatus = DAL.Constant.SynergisnLogDT_Cstatus_NoAudit;
+                        nextdt.Dmaketime = DateTime.Now;
+                        nextdt.Cvoucherno = ccode;
+                        logdtbll.Update(nextdt, nextdt.OP);
+                    }
+                    else
+                    {
+                        ccode = nextdt.Cvoucherno;
+                    }
 
-            #endregion
+
+                    if (string.IsNullOrEmpty(ccode))
+                    {
+                        //throw new Exception("获取上游单据失败"); 
+                        if (nextdt.Cstatus != DAL.Constant.SynergisnLogDT_Cstatus_NoAudit) nextdt.Cstatus = DAL.Constant.SynerginsLog_Cstatus_NoDeal;
+                        nextdt.Dmaketime = DateTime.Now;
+                        nextdt.Cvoucherno = ccode;
+                        logdtbll.Update(nextdt, nextdt.OP);
+                        break;
+                    }
+
+                    if (nextdt.Isaudit == DAL.Constant.SynergisnLogDT_Isaudit_True)
+                    {
+                        nextdt.Cstatus = DAL.Constant.SynergisnLogDT_Cstatus_Complete;
+                        dr = op.MakeAudit(bd, nextdt);   //审核单据
+                    }
+                    else
+                    {
+                        nextdt.Cstatus = DAL.Constant.SynergisnLogDT_Cstatus_NoAudit;
+
+                    }
+                    //nextdt.Cstatus = Constant.SynergisnLogDT_Cstatus_Complete;
+                    nextdt.Dmaketime = DateTime.Now;
+                    nextdt.Cvoucherno = ccode;
+                    logdtbll.Update(nextdt, nextdt.OP);
+
+                    //log.Cstatus = DAL.Common.SetLogStatus(log.Cstatus, Constant.SynerginsLog_Cstatus_Complete);
+                    if (nextdt.Isaudit == DAL.Constant.SynergisnLogDT_Isaudit_True)
+                    {
+                        log.Cstatus = DAL.Common.SetLogStatus(log.Cstatus, DAL.Constant.SynerginsLog_Cstatus_Complete);
+                    }
+                    else
+                    {
+                        log.Cstatus = DAL.Common.SetLogStatus(log.Cstatus, DAL.Constant.SynerginsLog_Cstatus_Wait);
+                        break;
+                    }
+                    List<Model.Synergismlogdt> listnl = logdtbll.GetNext(nextdt, nextdt.OP);
+                    MakeLogDT(vouchtype, dsHead, dsBody, log, dr, logdtbll, logbll, fdt, listnl);
+
+                }
+                catch (Exception ex)
+                {
+                    dr.ResultNum = DAL.Constant.ResultNum_NormalError;
+                    dr.ResultMsg = ex.Message;
+                    Log.WriteWinLog(ex.ToString());
+                    nextdt.Cstatus = DAL.Constant.SynergisnLogDT_Cstatus_Error;
+                    nextdt.Cerrordesc = ex.Message;
+                    nextdt.Errortimes++;
+                    nextdt.Dmaketime = DateTime.Now;
+                    logdtbll.Update(nextdt, nextdt.OP);
+                    preDt = logdtbll.GetPrevious(nextdt, nextdt.OP);
+
+                    log.Cstatus = DAL.Common.SetLogStatus(log.Cstatus, DAL.Constant.SynerginsLog_Cstatus_Error);
+
+                }
+                #endregion
+
+                #region 任务日志  结果
+
+                //nextdt.Cstatus = DAL.Constant.SynergisnLogDT_Cstatus_NoAudit;
+                //nextdt.Dmaketime = DateTime.Now;
+                //nextdt.Cvoucherno = ccode;
+                //logdtbll.Update(nextdt, nextdt.OP);
+
+                #endregion
+            }
+
+         
 
             return dr;
           

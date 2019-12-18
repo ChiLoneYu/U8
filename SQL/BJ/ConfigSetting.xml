@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="GB2312"?>
 <filelist>
 	<ControlX ID="ME_INTF" Name="U8 WMS接口">
-		<!-- 表结构 -->
+		<!-- 表结构 --> 
+		<file 路径="SQL\ME_INTF" 文件="UFSystem_Data_Comm_NL.sql" 数据库="UFSystem" 安装类型="S" /> 
 		<file 路径="SQL\ME_INTF" 文件="Data_STR_Comm_Setting_NL.sql" 数据库="UFData" 安装类型="S" /> 
 		<file 路径="SQL\ME_INTF" 文件="Data_STR_CQ_Voucher_NL.sql" 数据库="UFData" 安装类型="S" />
                 <file 路径="SQL\ME_INTF" 文件="Data_STR_CQ_Event_NL.sql" 数据库="UFData" 安装类型="S" />

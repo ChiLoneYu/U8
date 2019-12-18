@@ -1567,7 +1567,7 @@ namespace U8.Interface.Bus.ApiService.Setting
         private void btnInvoke_Click(object sender, EventArgs e)
         {
             U8.Interface.Bus.ApiService.BLL.InvokeUtility op = new U8.Interface.Bus.ApiService.BLL.InvokeUtility();
-            string headJson = "[{jjj:'sss',kkk:'ddd',zz:5}]";
+            string headJson = "[{cpoid:'999000',kkk:'ddd',zz:5}]";
             string bodyJson = "[{jjj:'sss',kkk:'ddd',zz:5}]";
 
             DataTable dtHead = LxzLib.Comm.DataFormatConvert.JsSerialize.Json2Dtb(headJson);

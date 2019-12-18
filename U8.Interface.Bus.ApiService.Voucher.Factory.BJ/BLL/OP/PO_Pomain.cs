@@ -126,13 +126,13 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         }
          
 
-        ///获取上一结点
+        ///更新任务日志 子表
         public override int Update(Model.Synergismlogdt dt)
         {
             return 1;
         }
 
-        //
+        ///更新任务日志 主表
         public override int Update(Model.Synergismlog dt)
         {
             return 1;

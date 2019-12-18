@@ -18,7 +18,7 @@ namespace U8.Interface.Bus.ApiService.DAL.DS
         /// <param name="dt"></param>
         /// <param name="pdt"></param>
         /// <returns></returns>
-        public List<Model.Fieldcmps> GetListFieldcmps(Model.Synergismlogdt dt, Model.Synergismlogdt pdt)
+        public List<Model.Fieldcmps> GetListFieldcmps(Model.Synergismlogdt dt, Model.Synergismlogdt pdt,int tasktype)
         {
             DAL.DS.Fieldcmp fddal = new DAL.DS.Fieldcmp();
             Model.Fieldcmp fdmodel = fddal.GetModel(string.Format("cfrombillcardnum='{0}' and ctobillcardnum='{1}'", pdt.Cvouchertype, dt.Cvouchertype));

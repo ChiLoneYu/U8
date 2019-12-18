@@ -1,3 +1,8 @@
+INSERT INTO mes_comm_mainacc (connstr,accid,caddress,cdbpwd,cdatabase) 
+VALUES ('Provider=SQLOLEDB.1;Password=12345679a;Persist Security Info=True;User ID=sa;Initial Catalog=UFDATA_999_2014;Data Source=u8v13;Current Language=Simplified Chinese;Use Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Workstation ID=U8V13;Use Encryption for Data=False;Tag with column collation when possible=False',
+ '1000000001','U8V13','12345679a','UFDATA_999_2014')
+
+
 ----产成品入库单
 --测试数据  新增
 INSERT INTO MES_CQ_rdrecord10 (operflag,opertype,crdcode,cWhCode,cRdStyleCode,cDepCode)

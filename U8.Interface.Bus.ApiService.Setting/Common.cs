@@ -860,14 +860,14 @@ namespace U8.Interface.Bus.ApiService.Setting
 
             try
             {
-                if (!DbHelperSQL.Exists("SELECT 1 FROM UFSystem..sysobjects WHERE name = 'HY_DZ_K7_MAINACC' AND type='U'")) return true;
+                if (!DbHelperSQL.Exists("SELECT 1 FROM UFSystem..sysobjects WHERE name = 'MES_Comm_MAINACC' AND type='U'")) return true;
             }
             catch
             { return true; }
 
             try
             {
-                return DbHelperSQL.Exists("SELECT 1 FROM UFSystem..HY_DZ_K7_MAINACC WHERE (caddress='" + Common.dicRegist["servername"] + "' OR caddress LIKE '" + Common.dicRegist["servername"] + "/%') AND cdatabase='" + Common.dicRegist["dbname"] + "' ");
+                return DbHelperSQL.Exists("SELECT 1 FROM UFSystem..MES_Comm_MAINACC WHERE (caddress='" + Common.dicRegist["servername"] + "' OR caddress LIKE '" + Common.dicRegist["servername"] + "/%') AND cdatabase='" + Common.dicRegist["dbname"] + "' ");
             }
             catch
             { return false; }
@@ -883,8 +883,8 @@ namespace U8.Interface.Bus.ApiService.Setting
             try
             {
                 object obj;
-                if (!DbHelperSQL.Exists("SELECT 1 FROM UFSystem..sysobjects  WHERE  name = 'HY_DZ_K7_MAINACC' AND type = 'U' ")) return false;
-                obj = DbHelperSQL.GetSingle("SELECT COUNT(1) FROM UFSystem..HY_DZ_K7_MAINACC ");
+                if (!DbHelperSQL.Exists("SELECT 1 FROM UFSystem..sysobjects  WHERE  name = 'MES_Comm_MAINACC' AND type = 'U' ")) return false;
+                obj = DbHelperSQL.GetSingle("SELECT COUNT(1) FROM UFSystem..MES_Comm_MAINACC ");
                 if (obj == null || obj == DBNull.Value) return false;
                 if (System.Convert.ToInt32(obj) <= 0) return false; 
                 return true;
@@ -973,9 +973,9 @@ namespace U8.Interface.Bus.ApiService.Setting
             //    if (oScalar == null || oScalar == DBNull.Value) return false;
             //}
 
-            if (!DbHelperSQL.Exists("SELECT 1 FROM UFSystem..sysobjects WHERE name = 'HY_DZ_K7_MAINACC' AND type='U'")) return true;
+            if (!DbHelperSQL.Exists("SELECT 1 FROM UFSystem..sysobjects WHERE name = 'Mes_Comm_MAINACC' AND type='U'")) return true;
 
-            if (DbHelperSQL.Exists("SELECT 1 FROM UFSystem..HY_DZ_K7_MAINACC WHERE (caddress='" + sHostName + "' OR caddress LIKE '" + sHostName + "/%') ")) return true;
+            if (DbHelperSQL.Exists("SELECT 1 FROM UFSystem..Mes_Comm_MAINACC WHERE (caddress='" + sHostName + "' OR caddress LIKE '" + sHostName + "/%') ")) return true;
 
             return false;
         }

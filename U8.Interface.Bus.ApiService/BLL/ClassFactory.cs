@@ -229,9 +229,14 @@ namespace U8.Interface.Bus.ApiService.BLL
                 case 2:
                     dal = new DAL.DS.Fieldcmps();
                     break;
-                default:
-                    BLL.Common.ErrorMsg(SysInfo.productName, "tasktype" + tasktype + "未适配!");
-                    return null;
+                case 3:
+                    dal = new DAL.Fieldcmps();
+                    break;
+                default: 
+                    dal = new DAL.Fieldcmps();
+                    break;
+                    //BLL.Common.ErrorMsg(SysInfo.productName, "tasktype" + tasktype + "未适配!");
+                    //return null;
             }
 
             return dal;
