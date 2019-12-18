@@ -174,7 +174,7 @@ namespace U8.Interface.Bus.ApiService.Setting
             try
             {
                 BLL.TaskOperator sy = new BLL.TaskOperator();
-                BLL.SynergismLog log = new BLL.SynergismLog();
+               BLL.TaskLog.ITaskLogMain log = ApiService.BLL.ClassFactory.GetITaskLogMainBLL(0);
                 //List<Model.Synergismlog> llog = log.GetServiceList(" (s.cstatus in ('处理中','未处理')) OR (s.cstatus ='等待中' AND d.cstatus='未审核' AND d.ismanual<>1 AND d.isaudit=1 ) ");
                 List<Model.Synergismlog> llog = log.GetServiceList(" (s.cstatus in ('处理中','未处理')) ");
                 if (llog.Count < 1) return;
@@ -406,7 +406,7 @@ namespace U8.Interface.Bus.ApiService.Setting
 
             string autoid = dgvDetail.Rows[e.RowIndex].Cells["colBAutoID"].Value.ToString();
             BLL.TaskOperator blldeal = new BLL.TaskOperator();
-            BLL.ShowLogDt logbll = new BLL.ShowLogDt();
+            ApiService.BLL.TaskLog.IShowLogDt logbll = ApiService.BLL.ClassFactory.GetIShowLogDetailBLL(0);
             List<Model.ShowLogDt> lst = logbll.GetModelList("10", " SY.id='" + curLog.Id + "' AND SY.autoid='" + autoid + "'", "", "");
             SetOpname(lst);
             if (lst == null || lst.Count <= 0)
@@ -858,7 +858,7 @@ namespace U8.Interface.Bus.ApiService.Setting
             try
             {
                 bInit = true;
-                BLL.TaskLogFactory.IShowLog logbll = new BLL.TaskLogFactory.CQ.ShowLog();
+                BLL.TaskLog.IShowLog logbll = BLL.ClassFactory.GetIShowLogMainBLL(0);
                 string strWhere = GetWhereStr();
 
                 lstLog = logbll.GetModelList(dicLog["Top"], strWhere, dicLog["Field"], dicLog["Order"]);
@@ -944,7 +944,7 @@ namespace U8.Interface.Bus.ApiService.Setting
             {
                 if (cbxVoucherType.SelectedValue.ToString() == "0")
                 {
-                   // whereSYStr.Append(" and (SY.[cvouchertypecode] NOT IN (SELECT [cbillname] FROM HY_DZ_K7_BILLSCOPE)) ");
+                   // whereSYStr.Append(" and (SY.[cvouchertypecode] NOT IN (SELECT [cbillname] FROM Mes_Comm_BILLSCOPE)) ");
                     //whereDTStr.Append(" and (ISNUMERIC(DT.[cvouchertype]) = 0) ");
                 }
                 else
@@ -1011,7 +1011,7 @@ namespace U8.Interface.Bus.ApiService.Setting
         {
             try
             {
-                BLL.ShowLog logbll = new BLL.ShowLog();
+                ApiService.BLL.TaskLog.IShowLog logbll = ApiService.BLL.ClassFactory.GetIShowLogMainBLL(0);
                 List<Model.ShowLog> lst = logbll.GetModelList("1", " SY.id='" + curLog.Id + "' ", "", "");
                 if (lst == null || lst.Count <= 0) return;
 
@@ -1088,7 +1088,8 @@ namespace U8.Interface.Bus.ApiService.Setting
                 }
                 else
                 {
-                    BLL.ShowLogDt logbll = new BLL.ShowLogDt();
+
+                    ApiService.BLL.TaskLog.IShowLogDt logbll = ApiService.BLL.ClassFactory.GetIShowLogDetailBLL(0);
                     lstLogDt = logbll.GetModelList(dicLogDt["Top"], " SY.id='" + curLog.Id + "'", dicLogDt["Field"], dicLogDt["Order"]);
                     SetOpname(lstLogDt);
                 }
@@ -1187,7 +1188,7 @@ namespace U8.Interface.Bus.ApiService.Setting
                     return true;
                 }
 
-                BLL.ShowLogDt logdtbll = new BLL.ShowLogDt();
+                ApiService.BLL.TaskLog.IShowLogDt logdtbll = ApiService.BLL.ClassFactory.GetIShowLogDetailBLL(0);
                 List<Model.ShowLogDt> lstTreeDt = logdtbll.GetModelList("1", " SY.id='" + curLog.Id + "' and SY.ilineno='1' ", "ilineno", "asc");
                 SetOpname(lstTreeDt);
                 if (lstTreeDt == null || lstTreeDt.Count <= 0) return false;
@@ -1239,7 +1240,7 @@ namespace U8.Interface.Bus.ApiService.Setting
         {
             try
             {
-                BLL.ShowLogDt logdtbll = new BLL.ShowLogDt();
+                ApiService.BLL.TaskLog.IShowLogDt logdtbll = ApiService.BLL.ClassFactory.GetIShowLogDetailBLL(0);
                 List<Model.ShowLogDt> lstTreeDt = logdtbll.GetModelList("100", " SY.id='" + curLog.Id + "' and SY.fatherid='" + fatherID + "'", "ilineno", "asc");
                 SetOpname(lstTreeDt);
 
@@ -1412,7 +1413,7 @@ namespace U8.Interface.Bus.ApiService.Setting
         /// </summary>
         private void OutPut2Excel()
         {
-            BLL.ShowLog logbll = new BLL.ShowLog();
+            ApiService.BLL.TaskLog.IShowLog logbll = ApiService.BLL.ClassFactory.GetIShowLogMainBLL(0);
             DataSet dsLog;
             DataSet dsLogDt;
             string strWhere;
@@ -1470,8 +1471,8 @@ namespace U8.Interface.Bus.ApiService.Setting
             }
 
             BLL.TaskOperator blldeal = new BLL.TaskOperator();
-            BLL.ShowLogDt logdt = new BLL.ShowLogDt(); 
-            DAL.SynergismLogDt dal = new DAL.SynergismLogDt();
+            ApiService.BLL.TaskLog.IShowLogDt logdt = ApiService.BLL.ClassFactory.GetIShowLogDetailBLL(0);
+            ApiService.DAL.TaskLog.ITaskLogDetail dal = ApiService.BLL.ClassFactory.GetITaskLogDetailDAL(0);
             int res = blldeal.ChkExistsInData(autoid);
             bool hasProblem = false;
  

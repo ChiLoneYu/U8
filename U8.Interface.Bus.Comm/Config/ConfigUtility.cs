@@ -385,42 +385,42 @@ namespace U8.Interface.Bus.Config
  
         private static string GetDataBaseSrv()
         {
-            string res = GetAttrib("/configuration/DataService", "databasesrv"); 
+            string res = GetAttrib("/configuration/DataService", "dbserver"); 
             return res;
         }
         private static string GetDataBaseCatalog()
         {
-            string res = GetAttrib("/configuration/DataService", "dbname");
+            string res = GetAttrib("/configuration/DataService", "dbcatalog");
             return res;
         }
         private static string GetDataBaseUser()
         {
-            string res = GetAttrib("/configuration/DataService", "user");
+            string res = GetAttrib("/configuration/DataService", "dbuser");
             return res;
         }
         private static string GetDataBasePwd()
         {
-            string res = GetAttrib("/configuration/DataService", "pwd");
+            string res = GetAttrib("/configuration/DataService", "dbpwd");
             return res;
         }
         private static void SetDataBaseSrv(string value)
         {
-            string res = SetAttrib("/configuration/DataService", "databasesrv",value);
+            string res = SetAttrib("/configuration/DataService", "dbserver",value);
             SaveXml(); 
         }
         private static void SetDataBaseCatalog(string value)
         {
-            string res = SetAttrib("/configuration/DataService", "dbname", value);
+            string res = SetAttrib("/configuration/DataService", "dbcatalog", value);
             SaveXml();
         }
         private static void SetDataBaseUser(string value)
         {
-            string res = SetAttrib("/configuration/DataService", "user",value);
+            string res = SetAttrib("/configuration/DataService", "dbuser",value);
             SaveXml(); 
         }
         private static void SetDataBasePwd(string pwd)
         {
-            SetAttrib("/configuration/DataService", "pwd",pwd);
+            SetAttrib("/configuration/DataService", "dbpwd",pwd);
             SaveXml(); 
         }
 

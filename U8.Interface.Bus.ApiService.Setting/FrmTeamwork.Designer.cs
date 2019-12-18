@@ -38,6 +38,7 @@
             this.btnServiceState = new System.Windows.Forms.ToolStripButton();
             this.btnUISetting = new System.Windows.Forms.ToolStripButton();
             this.btnOutPut = new System.Windows.Forms.ToolStripButton();
+            this.btnInvoke = new System.Windows.Forms.ToolStripButton();
             this.btnDebug = new System.Windows.Forms.ToolStripButton();
             this.btnCheck = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -146,6 +147,7 @@
             this.btnServiceState,
             this.btnUISetting,
             this.btnOutPut,
+            this.btnInvoke,
             this.btnDebug,
             this.btnCheck});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
@@ -189,6 +191,16 @@
             this.btnOutPut.Size = new System.Drawing.Size(73, 22);
             this.btnOutPut.Text = "导出日志";
             this.btnOutPut.Click += new System.EventHandler(this.btnOutPut_Click);
+            // 
+            // btnInvoke
+            // 
+            this.btnInvoke.Image = global::U8.Interface.Bus.ApiService.Setting.Properties.Resources.DEBUG;
+            this.btnInvoke.ImageTransparentColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnInvoke.Name = "btnInvoke";
+            this.btnInvoke.Size = new System.Drawing.Size(73, 22);
+            this.btnInvoke.Text = "接口调用";
+            this.btnInvoke.Visible = false;
+            this.btnInvoke.Click += new System.EventHandler(this.btnInvoke_Click);
             // 
             // btnDebug
             // 
@@ -1148,5 +1160,6 @@
         private System.Windows.Forms.ComboBox cbxAddress;
         private System.Windows.Forms.ComboBox cbxVoucherType;
         private System.Windows.Forms.ToolStripButton btnCheck;
+        private System.Windows.Forms.ToolStripButton btnInvoke;
     }
 }

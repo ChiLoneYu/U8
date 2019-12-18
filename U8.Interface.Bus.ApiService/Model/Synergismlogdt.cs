@@ -54,20 +54,29 @@ namespace U8.Interface.Bus.ApiService.Model
         /// cvouchertype
         /// </summary>		
         private string cvouchertype;
+        /// <summary>
+        /// 
+        /// </summary>
         public string Cvouchertype
         {
             get { return cvouchertype; }
             set { cvouchertype = value; }
         }
+
+
         /// <summary>
         /// cvoucherno
         /// </summary>		
         private string cvoucherno;
+        /// <summary>
+        /// 单据号
+        /// </summary>
         public string Cvoucherno
         {
             get { return cvoucherno; }
             set { cvoucherno = value; }
         }
+
         /// <summary>
         /// cpk
         /// </summary>		

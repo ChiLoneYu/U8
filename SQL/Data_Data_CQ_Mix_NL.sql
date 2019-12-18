@@ -1,6 +1,53 @@
 /*======================= table data: MES_CQ_DLLReflect ========================*/
 print 'dbo.MES_CQ_DLLReflect data...' 
-  
+----任务日志
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='logBLL')  
+BEGIN
+insert into MES_Comm_DLLReflect (TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'SynergismLog','logBLL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.BLL')
+END
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='logsBLL')  
+BEGIN
+insert into MES_Comm_DLLReflect ( TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'SynergisnLogDT','logsBLL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.BLL')
+END
+
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='logDAL')  
+BEGIN
+insert into MES_Comm_DLLReflect (TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'SynergismLog','logDAL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.DAL')
+END
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='logsDAL')  
+BEGIN
+insert into MES_Comm_DLLReflect ( TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'SynergisnLogDT','logsDAL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.DAL')
+END
+
+----日志查询
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='showBLL')  
+BEGIN
+insert into MES_Comm_DLLReflect (TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'ShowLog','showBLL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.BLL')
+END
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='showsBLL')  
+BEGIN
+insert into MES_Comm_DLLReflect ( TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'ShowLogDt','showsBLL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.BLL')
+END
+
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='showDAL')  
+BEGIN
+insert into MES_Comm_DLLReflect (TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'ShowLog','showDAL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.DAL')
+END
+IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND ClassType='showsDAL')  
+BEGIN
+insert into MES_Comm_DLLReflect ( TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 
+  (0,'ShowLogDt','showsDAL','','U8.Interface.Bus.ApiService.Voucher.Factory.XT','U8.Interface.Bus.ApiService.Voucher.Factory.XT.DAL')
+END
+
+
+----产成品入库单  
 IF NOT EXISTS (SELECT 1 FROM MES_Comm_DLLReflect WHERE TaskType =0 AND cvouchertype = '0411' AND ClassType='op')  
 BEGIN
 insert into MES_Comm_DLLReflect (TaskType,ClassName,ClassType,cvouchertype,Dllpath,Namespace ) values 

@@ -20,7 +20,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// <summary>
     /// 采购入库单 (HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class PuStoreIn : StockOP
+    public abstract class PuStoreIn : StockOP
     {  
         public override string SetTableName()
         {

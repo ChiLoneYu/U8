@@ -14,7 +14,7 @@ namespace U8.Interface.Bus.ApiService.DAL
         string _tableName = "HY_DZ_K7_REGIST";
 
         /// <summary>
-        /// 得到一个对象实体
+        /// 获取数据库连接信息
         /// </summary>
         public Model.Regist GetModel(string acccode)
         { 
@@ -33,8 +33,9 @@ namespace U8.Interface.Bus.ApiService.DAL
             return model;
         }
 
+
         /// <summary>
-        /// 得到一个对象实体
+        /// 获取数据库连接信息
         /// </summary>
         public Model.Regist GetModel_Bak(string acccode)
         {

@@ -19,18 +19,32 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// </summary>
         /// <returns></returns>
         public abstract  TaskList GetTask();
+ 
 
-        //获取上一结点
+        /// <summary>
+        /// 获取第一结点
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public abstract Model.Synergismlogdt GetFirst(Model.Synergismlogdt dt); 
-        //获取上一结点
+     
+        /// <summary>
+        /// 获取上一结点
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public abstract Model.Synergismlogdt GetPrevious(Model.Synergismlogdt dt); 
-        //获取下一结点
+ 
+        /// <summary>
+        /// 获取下一结点
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public abstract List<Model.Synergismlogdt> GetNext(Model.Synergismlogdt dt);
 
-
         public abstract Model.Synergismlogdt GetModel(string autoid);
-        public abstract Model.Synergismlog GetLogModel(string autoid); 
 
+        public abstract Model.Synergismlog GetLogModel(string autoid); 
  
         /// <summary>
         /// 更新任务日志子表
@@ -38,6 +52,7 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// <param name="dt"></param>
         /// <returns></returns>
         public abstract int Update(Model.Synergismlogdt dt);  
+
         /// <summary>
         /// 更新任务日志主表
         /// </summary>
@@ -53,7 +68,6 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// <param name="bd"></param>
         /// <returns></returns>
         public abstract Model.DealResult MakeData(Model.Synergismlogdt dt, BaseData bd);
- 
          
         /// <summary>
         /// 新增单据、档案协同
@@ -62,15 +76,28 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// <returns></returns>
         public abstract Model.DealResult MakeVouch(BaseData bd);
 
-        //修改单据
+        /// <summary>
+        /// 修改单据
+        /// </summary>
+        /// <param name="bd"></param>
+        /// <returns></returns>
         public abstract Model.DealResult MakeUpdate(BaseData bd);
-
-        //审核单据
+ 
+        /// <summary>
+        /// 审核单据
+        /// </summary>
+        /// <param name="bd"></param>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public abstract Model.DealResult MakeAudit(BaseData bd, Model.Synergismlogdt dt);
-
-        //删除单据
+  
+        /// <summary>
+        /// 删除单据
+        /// </summary>
+        /// <param name="bd"></param>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public abstract Model.DealResult UndoMake(BaseData bd, Model.Synergismlogdt dt);
-
 
         /// <summary>
         /// 获取当前单据号或ID

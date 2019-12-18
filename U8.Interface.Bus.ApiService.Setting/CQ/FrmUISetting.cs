@@ -144,7 +144,7 @@ namespace U8.Interface.Bus.ApiService.Setting.CQ
             if (aftBState != befBState) Common.dicRegist["bcolumn"] = aftBState.ToString();
             if (aftUState != befUState) Common.dicRegist["display"] = aftUState.ToString();
             //Common.SetRegist();
-
+            Common.SetConfig();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

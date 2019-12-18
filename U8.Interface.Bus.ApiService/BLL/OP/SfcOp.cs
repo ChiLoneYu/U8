@@ -57,27 +57,10 @@ namespace U8.Interface.Bus.ApiService.BLL
         {
             Model.DealResult dr = new Model.DealResult();
             Model.APIData apidata = bd as Model.APIData;         //API实体,包括当前任务节点信息
-            DAL.TaskLogFactory.ITaskLogDetail dtdal;
+            DAL.TaskLog.ITaskLogDetail dtdal;
 
-            //当前任务节点信息
-            switch (apidata.TaskType)
-            {
-                case 0:
-                    dtdal = new DAL.TaskLogFactory.CQ.TaskDetail();
-                    break;
-                case 1:
-                    dtdal = new DAL.SynergismLogDt();
-                    break;
-                case 2:
-                    dtdal = new DAL.TaskLogFactory.DS.TaskDetail();
-                    break;
-                default:
-                    BLL.Common.ErrorMsg(SysInfo.productName, "tasktype" + apidata.TaskType + "未适配!");
-                    dr.Message = "tasktype" + apidata.TaskType + "未适配!";
-                    return dr;
-
-            }
-
+            //当前任务节点信息 
+            dtdal = ClassFactory.GetITaskLogDetailDAL(3);
             Model.Synergismlogdt pdt = dtdal.GetPrevious(dt);      //上一任务节点信息
 
             apidata.ConnectInfo = dtdal.GetConnectInfo(dt);   //获取当前结点的数据串连接串
@@ -89,7 +72,7 @@ namespace U8.Interface.Bus.ApiService.BLL
                 DataSet rdsds = SetFromTabets(dt, pdt, apidata);  //上一节点 单据体信息
 
                 DAL.IFieldcmps fieldcmpdal = ClassFactory.GetIFieldcmpsDAL(apidata.TaskType); //new DAL.Fieldcmps();
-                List<Model.Fieldcmps> listfd = fieldcmpdal.GetListFieldcmps(dt, pdt);   //字段对照信息
+                List<Model.Fieldcmps> listfd = fieldcmpdal.GetListFieldcmps(dt, pdt,apidata.TaskType);   //字段对照信息
                 BLL.U8NameValue u8namevaluebll = new BLL.U8NameValue();  //字段赋值
                 u8namevaluebll.SetHeadData(apidata, rdds, rdsds, listfd, dt);
                 u8namevaluebll.SetSfcBodyData(apidata, rdds, rdsds, listfd, dt);

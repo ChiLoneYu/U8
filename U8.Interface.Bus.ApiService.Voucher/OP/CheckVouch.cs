@@ -20,7 +20,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// <summary>
     /// 盘点单(HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class CheckVouch : StockOP
+    public abstract class CheckVouch : StockOP
     {
 
         public override string SetTableName()

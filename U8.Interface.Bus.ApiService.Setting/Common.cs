@@ -239,10 +239,9 @@ namespace U8.Interface.Bus.ApiService.Setting
         }
 
 
-
-
         /// <summary>
         /// 获取注册表信息
+        /// 取代GetRegist
         /// </summary>
         /// <returns></returns>
         public static bool GetConfig()
@@ -299,6 +298,7 @@ namespace U8.Interface.Bus.ApiService.Setting
 
         /// <summary>
         /// 保存注册表信息
+        /// 取代  SetRegist
         /// </summary>
         /// <returns></returns>
         public static bool SetConfig(out string strErr)
@@ -401,6 +401,7 @@ namespace U8.Interface.Bus.ApiService.Setting
         {
             try
             {
+                SetConfig();
                 //SetRegist();
                 //DbHelperSQL.connectionString = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3};Current Language=Simplified Chinese", ServerName, DBName, UserName, DBPwd);
                 return true;
@@ -1010,8 +1011,10 @@ namespace U8.Interface.Bus.ApiService.Setting
 
         /// <summary>
         /// 验证有效性
+        /// 取代 Verfication,Verfication配置信息存于注册表
+        /// Verification_Config 配置信息存于配置文档
         /// </summary>
-        public static bool Verification_lxz()
+        public static bool Verification_Config()
         {
             bIsValid = true;
 

@@ -114,7 +114,7 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// 获取U8登录站点标识Serial
         /// </summary>
         /// <returns></returns>
-        internal static string GetSerial()
+        public static string GetSerial()
         {
             string strMac = GetLocalMacAddress();
 
@@ -135,8 +135,8 @@ namespace U8.Interface.Bus.ApiService.BLL
                 return strDefault;
             }
 
-            BLL.TaskLogFactory.ITaskLogDetail bllDT = new BLL.SynergisnLogDT();
-            DAL.SynergismLogDt dalDT = new SynergismLogDt();
+            BLL.TaskLog.ITaskLogDetail bllDT = ClassFactory.GetITaskLogDetailBLL(dt.TaskType);
+            DAL.TaskLog.ITaskLogDetail dalDT = ClassFactory.GetITaskLogDetailDAL(dt.TaskType);
             Model.Synergismlogdt dtPrev;
             dtPrev = bllDT.GetPrevious(dt,dt.OP);
             Model.ConnectInfo ConnectStr = dalDT.getConnectStr(dtPrev);

@@ -39,7 +39,8 @@ namespace U8.Interface.Bus.ApiService.Setting
                 Run.ReleaseMutex();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                if (Common.Verification_lxz())
+                if (Common.Verification_Config())
+                //if (Common.Verification())
                 {
                     Form frm;
                     switch (U8.Interface.Bus.Config.ConfigUtility.TaskType.ToLower())

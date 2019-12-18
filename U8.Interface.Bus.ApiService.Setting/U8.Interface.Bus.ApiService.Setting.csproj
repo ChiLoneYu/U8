@@ -114,6 +114,7 @@
     <Compile Include="FrmUISetting.Designer.cs">
       <DependentUpon>FrmUISetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="JsSerialize.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CQ\FrmU8AppSetting.resx">
@@ -187,6 +188,7 @@
   <ItemGroup>
     <Content Include="favicon.ico">
     </Content>
+    <None Include="MesErpBus.config" />
     <None Include="Resources\LINK.png" />
     <None Include="Resources\UI.png" />
     <None Include="Resources\DEBUG.png" />

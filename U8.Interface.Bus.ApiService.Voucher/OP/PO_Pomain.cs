@@ -18,7 +18,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// <summary>
     /// 采购订单(HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class PO_Pomain : PurchaseOp
+    public abstract class PO_Pomain : PurchaseOp
     {
 
         public override string SetApiAddressAdd()
@@ -50,18 +50,23 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         {
             throw new NotImplementedException();
         }
+
         public override string SetVouchType()
         {
             return "1";
         }
 
+        public override string SetTableName()
+        {
+            return "PO_POmain";
+        }
 
         /// <summary>
         /// CODE ID互查
         /// </summary>
         /// <param name="strID"></param>
         /// <param name="bd"></param>
-        /// <param name="codeorid"></param>
+        /// <param name="codeorid">第一个参数含义</param>
         /// <returns></returns>
         public override string GetCodeorID(string strID, BaseData bd, string codeorid)
         {
@@ -92,46 +97,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         {
             return null;
         }
-
         
-
-        /// <summary>
-        /// 获取生单表头数据
-        /// </summary>
-        /// <param name="dt"></param>
-        /// <param name="pdt"></param>
-        /// <param name="apidata"></param>
-        /// <returns></returns>
-        public override System.Data.DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
-        {
-            ApiService.DAL.SynergismLogDt dtdal = new ApiService.DAL.SynergismLogDt();
-            Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
-            return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceMainDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
-        }
-
-
-
-        /// <summary>
-        /// 获取生单表体数据
-        /// </summary>
-        /// <param name="dt"></param>
-        /// <param name="pdt"></param>
-        /// <param name="apidata"></param>
-        /// <returns></returns>
-        public override System.Data.DataSet SetFromTabets(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
-        {
-            ApiService.DAL.SynergismLogDt dtdal = new ApiService.DAL.SynergismLogDt();
-            Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
-            return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceDetailDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
-        }
-
-
-        public override string SetTableName()
-        {
-            return "PO_POmain";
-        }
-
-
         public override void SetNormalValue(Model.APIData apidata, Model.Synergismlogdt dt)
         {
             base.SetNormalValue(apidata, dt);
@@ -146,8 +112,6 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
             nv.U8FieldValue = help.GetSingle(sql).NullToString();
             if (string.IsNullOrEmpty(nv.U8FieldValue)) nv.U8FieldValue = "0000000001";
         }
- 
-
 
         /// <summary>
         /// 审核

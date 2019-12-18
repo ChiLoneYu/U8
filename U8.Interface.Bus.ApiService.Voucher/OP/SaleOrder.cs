@@ -18,7 +18,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// <summary>
     /// 销售订单(HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class SaleOrder : ApiService.BLL.SaleOp
+    public abstract class SaleOrder : ApiService.BLL.SaleOp
     {
         public override string SetApiAddressAdd()
         {
@@ -68,7 +68,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         /// <returns></returns>
         public override System.Data.DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
         {
-            ApiService.DAL.SynergismLogDt dtdal = new ApiService.DAL.SynergismLogDt();
+            ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType); ;
             Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
             return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceMainDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
         }
@@ -83,7 +83,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         /// <returns></returns>
         public override System.Data.DataSet SetFromTabets(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
         {
-            ApiService.DAL.SynergismLogDt dtdal = new ApiService.DAL.SynergismLogDt();
+            ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(3); ;
             Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
             return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceDetailDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
         }

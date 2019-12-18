@@ -228,7 +228,8 @@ namespace U8.Interface.Bus.ApiService.Setting
             Common.dicRegist["pwd"] = txtDBPwd.Text;
 
             string strError = string.Empty;
-            if (Common.SetRegist(out strError))
+            if (Common.SetConfig(out strError))
+            //if (Common.SetRegist(out strError))
             {
                 Common.bIsLinked = true;
                 Common.MessageShow("设置成功,请重新打开日志查询界面应用更改");

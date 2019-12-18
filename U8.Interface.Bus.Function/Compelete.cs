@@ -55,8 +55,8 @@ namespace U8.Interface.Bus.Function
             string voucherno = string.Empty;
  
             
-            U8.Interface.Bus.ApiService.BLL.SynergisnLogDT dtbll = new U8.Interface.Bus.ApiService.BLL.SynergisnLogDT();
-            U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new U8.Interface.Bus.ApiService.DAL.SynergismLogDt();
+            U8.Interface.Bus.ApiService.BLL.TaskLog.ITaskLogDetail dtbll = ClassFactory.GetITaskLogDetailBLL(0);
+            U8.Interface.Bus.ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(0);
             sql = string.Format("  d.id={0} and d.accid='{1}' and cvouchertype='{2}'  and d.cstatus='完成' and cvoucherno<>'' order by  ilineno desc", routeid, accid, vouchertype);
             List<U8.Interface.Bus.ApiService.Model.Synergismlogdt> list = dtbll.GetModelList(sql);
             if (list.Count == 0) return "error:" + "未能取到该路线单号";
@@ -354,7 +354,7 @@ namespace U8.Interface.Bus.Function
                 strAccid = DbHelperSQL.GetSingle(sql).NullToString();
                 if (string.IsNullOrEmpty(strAccid)) return "error:函数GetCusInvInfo取值错误:" + "未能取到账套ID";
 
-                U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new U8.Interface.Bus.ApiService.DAL.SynergismLogDt();
+                U8.Interface.Bus.ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(0);
                 U8.Interface.Bus.ApiService.Model.Synergismlogdt dt = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
                 dt.Accid = strAccid;
                 U8.Interface.Bus.ApiService.Model.ConnectInfo connectinfo = dtdal.GetConnectInfo(dt);
@@ -436,7 +436,7 @@ namespace U8.Interface.Bus.Function
                 strAccid = DbHelperSQL.GetSingle(sql).NullToString();
                 if (string.IsNullOrEmpty(strAccid)) return "error:函数GetAddressByCus取值错误:" + "未能取到账套ID";
 
-                U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new U8.Interface.Bus.ApiService.DAL.SynergismLogDt();
+                U8.Interface.Bus.ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(0);
                 U8.Interface.Bus.ApiService.Model.Synergismlogdt dt = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
                 dt.Accid = strAccid;
                 U8.Interface.Bus.ApiService.Model.ConnectInfo connectinfo = dtdal.GetConnectInfo(dt);
@@ -488,7 +488,7 @@ namespace U8.Interface.Bus.Function
                 strAccid = DbHelperSQL.GetSingle(sql).NullToString();
                 if (string.IsNullOrEmpty(strAccid)) return "error:函数GetPayPerson取值错误:" + "未能取到账套ID";
 
-                U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new SynergismLogDt();
+                U8.Interface.Bus.ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(0); ;
                 U8.Interface.Bus.ApiService.Model.Synergismlogdt dt = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
                 dt.Accid = strAccid;
                 U8.Interface.Bus.ApiService.Model.ConnectInfo connectinfo = dtdal.GetConnectInfo(dt);
@@ -528,8 +528,8 @@ namespace U8.Interface.Bus.Function
             string sql = string.Empty;
             string cPOID = string.Empty;
 
-            U8.Interface.Bus.ApiService.BLL.SynergisnLogDT dtbll = new U8.Interface.Bus.ApiService.BLL.SynergisnLogDT();
-            U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new SynergismLogDt();
+            U8.Interface.Bus.ApiService.BLL.TaskLog.ITaskLogDetail dtbll = ClassFactory.GetITaskLogDetailBLL(0);
+            U8.Interface.Bus.ApiService. DAL.TaskLog.ITaskLogDetail dtdal =  ClassFactory.GetITaskLogDetailDAL(0);;
             sql = string.Format("  d.id={0} AND d.fatherid IS NULL and d.cstatus='完成' and cvoucherno<>'' order by  ilineno ", routeid);
             List<U8.Interface.Bus.ApiService.Model.Synergismlogdt> list = dtbll.GetModelList(sql);
             if (list.Count == 0) return "error:" + "未能取到该路线单号";
@@ -640,7 +640,7 @@ namespace U8.Interface.Bus.Function
                 if (string.IsNullOrEmpty(d_acccode)) return "error:" + "未能取到目标账套";
 
                 #region 获取数据库连接
-                U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new SynergismLogDt();
+                U8.Interface.Bus.ApiService. DAL.TaskLog.ITaskLogDetail dtdal =  ClassFactory.GetITaskLogDetailDAL(0);;
                 U8.Interface.Bus.ApiService.Model.Synergismlogdt dt = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
 
                 dt.Accid = d_acccode;
@@ -754,7 +754,7 @@ namespace U8.Interface.Bus.Function
 
 
                 #region 获取数据库连接
-                U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new SynergismLogDt();
+                U8.Interface.Bus.ApiService. DAL.TaskLog.ITaskLogDetail dtdal =  ClassFactory.GetITaskLogDetailDAL(0);
                 U8.Interface.Bus.ApiService.Model.Synergismlogdt dt = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
                 string beforeAcccode = dsBefore.Tables[0].Rows[0]["preAcccode"].ToString();
                 string beforeVoucherType = dsBefore.Tables[0].Rows[0]["preAcccode"].ToString();
@@ -1001,7 +1001,7 @@ namespace U8.Interface.Bus.Function
                 strAccid = DbHelperSQL.GetSingle(sql).NullToString();
                 if (string.IsNullOrEmpty(strAccid)) return "error:函数GetSRPolicy取值错误:" + "未能取到账套ID";
 
-                U8.Interface.Bus.ApiService.DAL.SynergismLogDt dtdal = new SynergismLogDt();
+                U8.Interface.Bus.ApiService. DAL.TaskLog.ITaskLogDetail dtdal =  ClassFactory.GetITaskLogDetailDAL(0);
                 U8.Interface.Bus.ApiService.Model.Synergismlogdt dt = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
                 dt.Accid = strAccid;
                 U8.Interface.Bus.ApiService.Model.ConnectInfo connectinfo = dtdal.GetConnectInfo(dt);

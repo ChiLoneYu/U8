@@ -18,7 +18,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// <summary>
     /// 发货单(HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class Consignment : SaleOp
+    public abstract class Consignment : SaleOp
     {
         public override string SetApiAddressAdd()
         {
@@ -151,7 +151,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         //{
 
         //   Model.DealResult dr= base.MakeAudit(bd, dt);
-        //   BLL.SynergisnLogDT bll = new BLL.SynergisnLogDT();
+        //   BLL.TaskLog.ITaskLogMain bll = new BLL.TaskLog.ITaskLogMain();
         //   Model.Synergismlogdt nextdt=  bll.GetNext(dt);
         //   if (nextdt == null) return dr;
         //   if (nextdt.Cvouchertype != "0303") return dr;

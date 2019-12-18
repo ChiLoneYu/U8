@@ -6,12 +6,19 @@ using System.Data;
 
 namespace U8.Interface.Bus.ApiService.BLL
 {
+
+
+    /// <summary>
+    /// 表头数据赋值 BLL
+    /// 从源数据到生单数据 
+    /// </summary>
     public class U8NameValue
     {
 
 
         /// <summary>
         /// 设置表头字段值
+        /// rdds + rdsds -> apidata.HeadData
         /// </summary>
         /// <param name="apidata"></param>
         /// <param name="rdds">表头数据</param>
@@ -49,8 +56,7 @@ namespace U8.Interface.Bus.ApiService.BLL
                                 Common.ErrorMsg(fd.Cvalue.Split(','), 2, "完全参照格式不正确");
                                 BLL.Common.ErrorMsg(fd.Cvalue.Split(',')[1].Split('|'), 2, "完全参照格式不正确");
                                 string[] u8value = fd.Cvalue.Split(',')[1].Split('|');
-
-
+ 
                                 if (u8value[0] == DAL.Constant.Fixvalue_Cardsection_Title) u8nv.U8FieldValue = rdds.Tables[0].Rows[0][u8value[1]].ToDataString();
                                 if (u8value[0] == DAL.Constant.Fixvalue_Cardsection_Body) u8nv.U8FieldValue = rdsds.Tables[0].Rows[0][u8value[1]].ToDataString();
                                 break;
@@ -133,6 +139,7 @@ namespace U8.Interface.Bus.ApiService.BLL
         /// <summary>
         /// 设置表体字段值
         /// 按fieldcmps autoid 顺序赋值
+        /// rdds + rdsds -> apidata.BodyData
         /// </summary>
         /// <param name="apidata"></param>
         /// <param name="rdds">上一节点表头信息</param>

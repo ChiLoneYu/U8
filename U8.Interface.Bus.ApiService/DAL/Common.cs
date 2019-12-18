@@ -180,7 +180,7 @@ namespace U8.Interface.Bus.ApiService.DAL
         {
             List<Model.U8NameValue> lst = new List<Model.U8NameValue>();
             lst.Add(new Model.U8NameValue() { U8FieldName = "全部", U8FieldValue = "全部" });
-            string cmdText = "SELECT DISTINCT caddress FROM HY_DZ_K7_REGIST ";
+            string cmdText = "SELECT DISTINCT caddress FROM Mes_Comm_REGIST ";
             DataSet ds = DbHelperSQL.Query(cmdText);
             if (ds == null || ds.Tables[0].Rows.Count <= 0) return lst;
             Model.U8NameValue model;
@@ -203,7 +203,7 @@ namespace U8.Interface.Bus.ApiService.DAL
         {
             List<Model.U8NameValue> lst = new List<Model.U8NameValue>();
             lst.Add(new Model.U8NameValue() { U8FieldName = "全部", U8FieldValue = "全部" });
-            string cmdText = "SELECT DISTINCT [cflowname],1 AS [iorder],'Order' AS [type] FROM [HY_DZ_K7_ROUTESET] WITH(NOLOCK) UNION SELECT DISTINCT [itype] AS [cflowname],2 AS [iorder],'Data' AS [type] FROM [HY_DZ_K7_TYPE] WITH(NOLOCK) ORDER BY [iorder] ";
+            string cmdText = "SELECT DISTINCT [cflowname],1 AS [iorder],'Order' AS [type] FROM [Mes_Comm_ROUTESET] WITH(NOLOCK) UNION SELECT DISTINCT [itype] AS [cflowname],2 AS [iorder],'Data' AS [type] FROM [Mes_Comm_TYPE] WITH(NOLOCK) ORDER BY [iorder] ";
             DataSet ds = DbHelperSQL.Query(cmdText);
             if (ds == null || ds.Tables[0].Rows.Count <= 0) return lst;
             Model.U8NameValue model;
@@ -226,7 +226,7 @@ namespace U8.Interface.Bus.ApiService.DAL
         {
             List<Model.U8NameValue> lst = new List<Model.U8NameValue>();
             lst.Add(new Model.U8NameValue() { U8FieldName = "全部", U8FieldValue = "全部" });
-            string cmdText = "SELECT cardnum,cbillname FROM (SELECT cardnum,cbillname,1 AS [iorder],'Order' AS [type] FROM HY_DZ_K7_BILLSCOPE WHERE cardnum NOT IN ('0301','0302','0304') UNION SELECT '0' AS cardnum,'基础档案' AS cbillname,2 AS [iorder],'Data' AS [type] ) AS TEMP ORDER BY [iorder],CHARINDEX(cardnum,'17,01,03,0303,27,88,26,24,0304,0302,0301') ";
+            string cmdText = "SELECT cardnum,cbillname FROM (SELECT cardnum,cbillname,1 AS [iorder],'Order' AS [type] FROM Mes_Comm_BILLSCOPE WHERE cardnum NOT IN ('0301','0302','0304') UNION SELECT '0' AS cardnum,'基础档案' AS cbillname,2 AS [iorder],'Data' AS [type] ) AS TEMP ORDER BY [iorder],CHARINDEX(cardnum,'17,01,03,0303,27,88,26,24,0304,0302,0301') ";
             DataSet ds = DbHelperSQL.Query(cmdText);
             if (ds == null || ds.Tables[0].Rows.Count <= 0) return lst;
             Model.U8NameValue model;
@@ -780,7 +780,7 @@ namespace U8.Interface.Bus.ApiService.DAL
             if (funmodel.Cfuntype == Constant.Function_Cfuntype_SQL)//sql
             {
 
-                DAL.SynergismLogDt dtdal = new SynergismLogDt();
+                DAL.TaskLog.ITaskLogDetail dtdal =  ClassFactory.GetITaskLogDetailDAL(3);;
                 if (sqlmode == string.Empty) sqlmode = DbHelperSQL.connectionString;
                 if (sqlmode == Constant.Fixvalue_Cvalue_Master) sqlmode = DbHelperSQL.connectionString;
                 if (sqlmode == Constant.Fixvalue_Cvalue_Source)
@@ -855,7 +855,7 @@ namespace U8.Interface.Bus.ApiService.DAL
         {
             //if (apiData.Synergismlogdt.Cvouchertype != "24" && apiData.Synergismlogdt.Cvouchertype != "01") return true;
 
-            BLL.TaskLogFactory.ITaskLogDetail bllDT = ClassFactory.GetITaskLogDetailBLL(apiData.TaskType); //new BLL.SynergisnLogDT();
+            BLL.TaskLog.ITaskLogDetail bllDT = ClassFactory.GetITaskLogDetailBLL(apiData.TaskType); //new BLL.TaskLog.ITaskLogMain();
             if (apiData.OP == null)
             {
                 apiData.OP = ClassFactory.GetBaseOp(apiData.Synergismlogdt);
@@ -1175,7 +1175,7 @@ namespace U8.Interface.Bus.ApiService.DAL
             DAL.Regist registdal = new Regist();
             if (p == "s_accid")
             {
-                DAL.SynergismLogDt dals = new SynergismLogDt();
+                DAL.TaskLog.ITaskLogDetail dals = ClassFactory.GetITaskLogDetailDAL(3);
                 Model.Synergismlogdt pdt = dals.GetPrevious(apidata.Synergismlogdt);
                 Model.Regist regist = registdal.GetModel(pdt.Accid);
                 BLL.Common.ErrorMsg(regist, "未能取到保留字.公共变量.来源单据账套ID的值");

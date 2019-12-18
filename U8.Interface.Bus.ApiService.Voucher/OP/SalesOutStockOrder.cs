@@ -17,7 +17,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// <summary>
     /// 销售出库单 (HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class SalesOutStockOrder : SaleOp
+    public abstract class SalesOutStockOrder : SaleOp
     {
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
             if (flag.ToLower() != "true") return base.MakeVouch(bd);
 
             Model.Synergismlogdt dt = bd.Synergismlogdt;
-            BLL.SynergisnLogDT bll = new BLL.SynergisnLogDT();
+            BLL.TaskLog.ITaskLogDetail bll = ClassFactory.GetITaskLogDetailBLL(bd.TaskType);
             Model.Synergismlogdt prnext = bll.GetPrevious(dt,null);
             if (prnext.Cvouchertype != "01" && prnext.Cvouchertype != "03") return base.MakeVouch(bd);   //modified by liuxzha 支持退货单
 
@@ -119,14 +119,14 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         public override System.Data.DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
         {
 
-            ApiService.DAL.SynergismLogDt dtdal = new ApiService.DAL.SynergismLogDt();
+           ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType);
             Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
             return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceMainDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
         }
 
         public override System.Data.DataSet SetFromTabets(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
         {
-            ApiService.DAL.SynergismLogDt dtdal = new ApiService.DAL.SynergismLogDt();
+            ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType);
             Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
             return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceDetailDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
         }
