@@ -16,6 +16,7 @@ namespace U8.Interface.Bus.Event.SyncAdapter
     {
 
         /// <summary>
+        /// 物料清单
         /// 保存、删除事件接口方法
         /// </summary>
         /// <param name="ds">传入的数据集</param>

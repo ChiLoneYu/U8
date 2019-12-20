@@ -19,6 +19,7 @@ namespace U8.Interface.Bus.Event.SyncAdapter
         static string oldConnStr = null;
 
         /// <summary>
+        /// 生产制造
         /// 审核、弃审事件插口方法
         /// </summary>
         /// <param name="bomid">BomId</param>

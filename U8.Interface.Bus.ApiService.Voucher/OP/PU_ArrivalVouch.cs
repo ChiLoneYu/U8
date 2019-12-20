@@ -20,6 +20,10 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// </summary>
     public abstract class PU_ArrivalVouch : PurchaseOp
     {
+
+
+        #region  api  setting
+
         public override string SetApiAddressAdd()
         {
             return "U8API/ArrivedGoods/VoucherSave";
@@ -58,6 +62,8 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         {
             return "2";
         }
+
+        #endregion
 
 
         /// <summary>

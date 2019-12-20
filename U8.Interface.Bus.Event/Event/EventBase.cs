@@ -326,6 +326,11 @@ namespace U8.Interface.Bus.Event.SyncAdapter
                         oper = (Biz.BizBase)System.Reflection.Assembly.Load(U8.Interface.Bus.Config.ConfigUtility.EventBizDllName).CreateInstance(U8.Interface.Bus.Config.ConfigUtility.EventBizNamespace + "." + "AssemVouchRet", true, System.Reflection.BindingFlags.CreateInstance, null, new object[] { conn, domhead, dombody, login.UFDataConnstringForNet.ToString(), "d" }, null, null);
                         oper.Delete();
                         break;
+
+                    //采购订单
+                    case "u8api/purchaseorder/save_before":
+                    case "u8api/purchaseorder/save_after":
+                        break;
                          
                 }
                  

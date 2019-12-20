@@ -80,7 +80,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ.DAL
                 cimodel.Constring = string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID=sa;Password={2};Current Language=Simplified Chinese", rmdoel.Caddress, rmdoel.Caccname, rmdoel.Cdbpwd);
                 //cimodel.Date = BLL.Common.GetVerifyData(dt);
                 //if (cimodel.Date == DateTime.Now.ToString("yyyy-MM-dd")) cimodel.Date = BLL.Common.GetLoginDate(rmdoel);
-                cimodel.Date = DateTime.Now.ToString("yyyy-MM-dd");
+                cimodel.Date = "2015-1-11"; // DateTime.Now.ToString("yyyy-MM-dd");
                 return cimodel;
 
             }

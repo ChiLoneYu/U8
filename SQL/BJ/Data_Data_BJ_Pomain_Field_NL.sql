@@ -7,7 +7,7 @@ END
 
 GO
  
--- MES生成采购订单
+-- MES生成采购订单     ctype 0:参照来源订单;1:固定值;2:函数;3:
 -- DELETE FROM MES_CQ_FIXVALUE WHERE DID IN (SELECT AUTOID FROM  MES_Comm_FIELDCMPS  WHERE TaskType = '3' AND id='1000000110')
 -- DELETE FROM MES_Comm_FIELDCMPS  WHERE TaskType = '3' AND id='1000000110'
 -- 表头
@@ -118,6 +118,9 @@ BEGIN
 	if not exists(select * from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000110' and cardsection= 'T' and fieldname= 'poid')
 	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
 	  (3,  '1000010595',  '1000000110',  '0000000110',  1, null, null,  'T',  'poid',  '采购订单主表标识',  '0', null,  '1', null, null)
+	if not exists(select * from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000110' and cardsection= 'T' and fieldname= 'csysbarcode')
+	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
+	  (3,  '2000010595',  '1000000110',  '0000000110',  1, '11222333', null,  'T',  'csysbarcode',  '采购订单表头条码',  '0', null,  '1', null, null)
 
 
 
@@ -183,7 +186,7 @@ BEGIN
 	  (3,  '1000015419',  '1000000110',  '0000000110',  0,  '表体|需求分类代号说明,B|cdemandmemo', null,  'B',  'cdemandmemo',  '需求分类代号说明',  '0', null,  '1', null, null)
 	if not exists(select * from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000110' and cardsection= 'B' and fieldname= 'cFactoryCode')
 	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
-	  (3,  '1000015474',  '1000000110',  '0000000110',  1,  '',  '',  'B',  'cFactoryCode',  '工厂编码',  '0', null,  '1',  'B2D5B722-F134-4DA7-924A-C6BCD36EE6D3', null)
+	  (3,  '1000015474',  '1000000110',  '0000000110',  1,  '001',  '',  'B',  'cFactoryCode',  '工厂编码',  '0', null,  '1',  'B2D5B722-F134-4DA7-924A-C6BCD36EE6D3', null)
 	if not exists(select * from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000110' and cardsection= 'B' and fieldname= 'cfree1')
 	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
 	  (3,  '1000012190',  '1000000110',  '0000000110',  0,  '表体|自由项1,B|cfree1', null,  'B',  'cfree1',  '自由项1',  '0', null,  '1', null, null)
@@ -310,6 +313,10 @@ BEGIN
 	if not exists(select * from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000110' and cardsection= 'B' and fieldname= 'xtTrace_Predid')
 	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
 	  (3,  '1000015351',  '1000000110',  '0000000110',  2,  '获取订单跟踪信息(保留字.公共变量.来源单据账套ID,保留字.公共变量.目标单据账套ID,保留字.单据类型.采购订单,保留字.单据类型.采购订单,来源单据.表体.采购订单子表ID).来源单据表体ID',  '019',  'B',  'xtTrace_Predid',  '上游表体ID',  '0', null,  '0',  '17ED129E-EEFE-42B4-9AF8-E9C417AB8377', null)
+	if not exists(select * from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000110' and cardsection= 'B' and fieldname= 'csysbarcode')
+	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
+	  (3,  '2000015351',  '1000000110',  '0000000110',  1, 'b_barcode_11222333', null,  'B',  'sbsysbarcode',  '采购订单表体条码',  '0', null,  '1', null, null)
+
 
 
  

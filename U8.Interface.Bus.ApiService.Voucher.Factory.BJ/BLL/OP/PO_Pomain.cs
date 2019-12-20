@@ -60,46 +60,49 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         }
 
 
-
-        /// <summary>
-        /// 组织数据
-        /// </summary>
-        /// <param name="dt">当前任务节点信息</param>
-        /// <param name="bd">HY_DZ_K7_DLLReflect 中预置的 data类</param>
-        /// <returns></returns>
-        public Model.DealResult MakeData(Model.Synergismlogdt dt, BaseData bd)
-        {
-            Model.DealResult dr = new Model.DealResult();
-            Model.APIData apidata = bd as Model.APIData;         //API实体,包括当前任务节点信息
+        #region 父类实现
+        ///// <summary>
+        ///// 组织数据
+        ///// </summary>
+        ///// <param name="dt">当前任务节点信息</param>
+        ///// <param name="bd">HY_DZ_K7_DLLReflect 中预置的 data类</param>
+        ///// <returns></returns>
+        //public Model.DealResult MakeData(Model.Synergismlogdt dt, BaseData bd)
+        //{
+        //    Model.DealResult dr = new Model.DealResult();
+        //    Model.APIData apidata = bd as Model.APIData;         //API实体,包括当前任务节点信息
           
-            ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(tasktype);
+        //    ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(tasktype);
 
-            Model.Synergismlogdt pdt = dtdal.GetPrevious(dt);      //上一任务节点信息
+        //    Model.Synergismlogdt pdt = dtdal.GetPrevious(dt);      //上一任务节点信息
 
-            apidata.ConnectInfo = dtdal.GetConnectInfo(dt);   //获取当前结点的数据串连接串
-            apidata.Synergismlogdt = dt;
+        //    apidata.ConnectInfo = dtdal.GetConnectInfo(dt);   //获取当前结点的数据串连接串
+        //    apidata.Synergismlogdt = dt;
 
-            if (!apidata.Dodelete)
-            {
-                DataSet rdds = SetFromTabet(dt, pdt, apidata);    //上一节点 单据头信息
-                DataSet rdsds = SetFromTabets(dt, pdt, apidata);  //上一节点 单据体信息
+        //    if (!apidata.Dodelete)
+        //    {
+        //        DataSet rdds = SetFromTabet(dt, pdt, apidata);    //上一节点 单据头信息
+        //        DataSet rdsds = SetFromTabets(dt, pdt, apidata);  //上一节点 单据体信息
 
-                ApiService.DAL.IFieldcmps fieldcmpdal = ClassFactory.GetIFieldcmpsDAL(apidata.TaskType); //new DAL.Fieldcmps();
-                List<Model.Fieldcmps> listfd = fieldcmpdal.GetListFieldcmps(dt, pdt,apidata.TaskType);   //字段对照信息
-                ApiService.BLL.U8NameValue u8namevaluebll = new ApiService.BLL.U8NameValue();  //字段赋值
-                u8namevaluebll.SetHeadData(apidata, rdds, rdsds, listfd, dt);
-                u8namevaluebll.SetBodyData(apidata, rdds, rdsds, listfd, dt);
-
-
-                //设置订单关联    
-                ApiService.DAL.Common.SetInBody(apidata);
-                SetNormalValue(apidata, dt);
-            }
-            return dr;
-        }
+        //        ApiService.DAL.IFieldcmps fieldcmpdal = ClassFactory.GetIFieldcmpsDAL(apidata.TaskType); //new DAL.Fieldcmps();
+        //        List<Model.Fieldcmps> listfd = fieldcmpdal.GetListFieldcmps(dt, pdt,apidata.TaskType);   //字段对照信息
+        //        ApiService.BLL.U8NameValue u8namevaluebll = new ApiService.BLL.U8NameValue();  //字段赋值
+        //        u8namevaluebll.SetHeadData(apidata, rdds, rdsds, listfd, dt);
+        //        u8namevaluebll.SetBodyData(apidata, rdds, rdsds, listfd, dt);
 
 
+        //        //设置订单关联    
+        //        ApiService.DAL.Common.SetInBody(apidata);
+        //        SetNormalValue(apidata, dt);
+        //    }
+        //    return dr;
+        //}
 
+        #endregion
+
+
+
+        #region 单据数据来源
         /// <summary>
         /// 表头数据
         /// </summary>
@@ -124,7 +127,9 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         { 
             return dsBody;
         }
-         
+
+        #endregion
+
 
         ///更新任务日志 子表
         public override int Update(Model.Synergismlogdt dt)
@@ -186,7 +191,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
                 tmpd.Ilineno = 2;
                 tmpd.TaskType = tasktype;
                 tmpd.Cstatus = U8.Interface.Bus.ApiService.DAL.Constant.SynerginsLog_Cstatus_NoDeal;
-                tmpd.Isaudit = U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_True; 
+                tmpd.Isaudit = U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_False; //U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_True; 
                 tmpd.Cvoucherno = ""; 
 
                 logdt.Add(tmpd);

@@ -199,7 +199,6 @@
             this.btnInvoke.Name = "btnInvoke";
             this.btnInvoke.Size = new System.Drawing.Size(73, 22);
             this.btnInvoke.Text = "接口调用";
-            this.btnInvoke.Visible = false;
             this.btnInvoke.Click += new System.EventHandler(this.btnInvoke_Click);
             // 
             // btnDebug

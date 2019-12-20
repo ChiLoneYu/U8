@@ -468,10 +468,8 @@ namespace U8.Interface.Bus.ApiService.BLL
         {
             Model.DealResult dr = new Model.DealResult();
             Model.APIData apidata = bd as Model.APIData;         //API实体,包括当前任务节点信息
-            DAL.TaskLog.ITaskLogDetail dtdal;
-
-            //当前任务节点信息 
-            dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType);
+            
+            DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType);  //当前任务节点信息 
 
             Model.Synergismlogdt pdt = dtdal.GetPrevious(dt);      //上一任务节点信息
 
