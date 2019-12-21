@@ -12,11 +12,29 @@ using UFSoft.U8.U8M.DOSchema.BO;
 
 namespace U8.Interface.Bus.Event.SyncAdapter
 {
+
+
+
     public class MoEvent
     {
 
         static string oldEventIdentity = null;
         static string oldConnStr = null;
+
+  
+        /// <summary>
+        /// 保存事件
+        /// 删除事件
+        /// </summary>
+        /// <param name="mods"></param>
+        /// <param name="errmsg"></param>
+        /// <returns></returns>
+        public bool DoSaveEvent(UFSoft.U8.U8M.DOSchema.MO.MOrderDs mods, string errmsg)
+        { 
+            return true;
+        }
+
+
 
         /// <summary>
         /// 生产制造

@@ -272,19 +272,18 @@ namespace U8.Interface.Bus.Event.SyncAdapter
                         oper.Save();
                         break;
 
-
                     //销售订单
                     case "u8api/saleorder/audit_after":
                     case "u8api/saleorder/audit_before":
                         oper = (Biz.BizBase)System.Reflection.Assembly.Load(U8.Interface.Bus.Config.ConfigUtility.EventBizDllName).CreateInstance(U8.Interface.Bus.Config.ConfigUtility.EventBizNamespace + "." + "SO_SOMain", true, System.Reflection.BindingFlags.CreateInstance, null, new object[] { conn, domhead, dombody, login.UFDataConnstringForNet.ToString(), "a" }, null, null);
                         oper.Insert();
                         break;
+
                     case "u8api/saleorder/cancelaudit_after":
                     case "u8api/saleorder/cancelaudit_before":
                         oper = (Biz.BizBase)System.Reflection.Assembly.Load(U8.Interface.Bus.Config.ConfigUtility.EventBizDllName).CreateInstance(U8.Interface.Bus.Config.ConfigUtility.EventBizNamespace + "." + "SO_SOMain", true, System.Reflection.BindingFlags.CreateInstance, null, new object[] { conn, domhead, dombody, login.UFDataConnstringForNet.ToString(), "d" }, null, null);
                         oper.Delete();
                         break;
-
 
                     //采购到货单
                     case "u8api/arrivedgoods/audit_before":
@@ -327,10 +326,19 @@ namespace U8.Interface.Bus.Event.SyncAdapter
                         oper.Delete();
                         break;
 
-                    //采购订单
+                    //采购订单 保存
                     case "u8api/purchaseorder/save_before":
                     case "u8api/purchaseorder/save_after":
                         break;
+
+                    //采购到货单  保存
+                    case "u8api/arrivedgoods/save_before":
+                    case "u8api/arrivedgoods/save_after":
+                        string te = U8.Interface.Bus.Config.ConfigUtility.EventBizDllName;
+                        break;
+
+                    //采购入库单
+
                          
                 }
                  
