@@ -91,8 +91,9 @@ BEGIN
 	values   ('3','1','币种','T','0000000112',null,null,0,'表头|币种,T|cexch_name','cexch_name',null,'1000000112',1,1)  
 	END
 	IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='bNegative')   
-	BEGIN  insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) 
-	values   ('3','1','负发票标志','T','0000000112',null,null,1,'1','bNegative',null,'1000000112',1,1)  
+	BEGIN  
+	insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) 
+	values   ('3','1','负发票标志','T','0000000112',null,null,1,'0','bNegative',null,'1000000112',1,1)  
 	END
 	IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='iTaxRate')   
 	BEGIN  
@@ -119,7 +120,7 @@ BEGIN
 	IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='iBillType')   
 	BEGIN  
 		insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) 
-		values   ('3','1','单据类型','T','0000000112',null,null,1,'1','iBillType',null,'1000000112',1,1)  
+		values   ('3','1','单据类型','T','0000000112',null,null,1,'0','iBillType',null,'1000000112',1,1)  
 	END
 	--IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='cMakeTime')   BEGIN  insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) values   ('3','1','制单时间','T','0000000112',null,null,0,'表头|制单时间,T|cMakeTime','cMakeTime',null,'1000000112',1,1)  END
 	--IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='cModifyTime')   BEGIN  insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) values   ('3','1','修改时间','T','0000000112',null,null,0,'表头|修改时间,T|cModifyTime','cModifyTime',null,'1000000112',1,1)  END
@@ -134,7 +135,7 @@ BEGIN
 	IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='cCode')   
 	BEGIN  
 	insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) 
-	values   ('3','1','单据号','T','0000000112',null,null,1,'111','cCode',null,'1000000112',1,1)  
+	values   ('3','1','单据号','T','0000000112',null,null,1,'0000000001','cCode',null,'1000000112',1,1)  
 	END
 	--IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='cDefine3')   BEGIN  insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) values   ('3','1','表头自定义项3','T','0000000112',null,null,0,'表头|表头自定义项3,T|cDefine3','cDefine3',null,'1000000112',1,1)  END
 	--IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'T' AND fieldname='cDefine6')   
@@ -417,6 +418,9 @@ BEGIN
 	BEGIN  insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) 
 	values   ('3','1','需求跟踪方式','B','0000000112',null,null,0,'表体|需求跟踪方式,B|SoType','SoType',null,'1000000112',1,1)  
 	END
+	if not exists(select 1 from MES_Comm_FIELDCMPS where TaskType= 3 and id= '1000000112' and cardsection= 'B' and fieldname= 'cFactoryCode')
+	  insert into MES_Comm_FIELDCMPS ( TaskType, autoid, id, ccode, ctype, cvalue, cfunid, cardsection, fieldname, carditemname, isnull, cremark, isvisable, guid, seq ) values 
+	  (3,  '1000115474',  '1000000112',  '0000000112',  0,  '表体|工厂编码,B|cFactoryCode',  '',  'B',  'cFactoryCode',  '工厂编码',  '0', null,  '1',  'B2D5B722-F134-4DA7-924A-C6BCD36EE6D3', null)
 	IF NOT EXISTS (SELECT 1 FROM MES_Comm_FIELDCMPS WHERE TaskType = '3' AND id='1000000112' AND cardsection = 'B' AND fieldname='editprop') 
 	BEGIN
 	insert into MES_Comm_FIELDCMPS ( TaskType, autoid,carditemname,cardsection,ccode,cfunid,cremark,ctype,cvalue,fieldname,guid,id,isnull,isvisable  ) values 
