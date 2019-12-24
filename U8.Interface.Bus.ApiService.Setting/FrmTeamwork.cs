@@ -1577,6 +1577,7 @@ namespace U8.Interface.Bus.ApiService.Setting
 
 
             //采购到货单  26
+            #region   采购到货单  26
             headJson = @"[{
                     mes_ddate:'2015-01-11', cptcode:'03', cptname:'普通采购', mes_cvencode:'03003',  mes_cdepcode:'0401',  cpocode:'',
                     cpersoncode:'00044',   cexch_name:'人民币', cexch_code:'RMB', iexchrate:'1', cbustype:'普通采购', cmaker:'demo', bnegative:'0', idiscounttaxtype:'0',  
@@ -1602,34 +1603,7 @@ namespace U8.Interface.Bus.ApiService.Setting
                     } 
 	
             ]";
-
-//            bodyJson = @"[
-//                    {   
-//                    mes_cwhcode:'',    mes_cinvcode:'01019002082',
-//                    cinvname:'包装材料',  ccomunitcode:'0108', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', 
-//                    bservice:'False', binvbatch:'False', ioritaxcost:'4.000000', mes_iquantity:100.000, ioricost:'3.4200', iorimoney:'341.88', ioritaxprice:'58.12', 
-//                    iorisum:'400', icost:'3.42', imoney:'341.88', itaxprice:'58.12', isum:'400.00', cbcloser:'', itaxrate:'17.00', iposid:'', 
-//                    fvalidquantity:'100.00', fvalidnum:'0.00', fvalidinquan:'100.0000', finvalidinquan:'0.00', fretquantity:'0.0000', 
-//                    frealquantity:'100.00', frealnum:'0.000', rejectsource:'False', bgsp:'0', btaxcost:'False', binspect:'', sotype:'', iordertype:'', cordercode:'', bexigency:'0', finvalidinnum:'0.00', 
-//                    vouchstate:'0', 
-//                    fininquantity:'0.00', inspecexchrate:'0.00', iexpiratdatecalcu:'0', ivouchrowno:'1', cbsysbarcode:'', iproducttype:'0', bgift:'0', cfactorycode:'002'
-//                    }
-//                    ,
-//                    { 
-//                    mes_cwhcode:'', mes_cinvcode:'01019002082',  
-//                    ccomunitcode:'0108', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', 
-//                    bservice:'False', binvbatch:'False', ioritaxcost:'15.00', mes_iquantity:20.00, 
-//                    ioricost:'12.820000', iorimoney:'256.41', ioritaxprice:'43.59', iorisum:'300', icost:'12.82', imoney:'256.41', itaxprice:'43.59', isum:'300.00',
-//                    cbcloser:'', itaxrate:'17.00', 
-//                    iposid:'', fvalidquantity:'20.000000', fvalidnum:'.000000', fvalidinquan:'20.000000', finvalidinquan:'0.00', fretquantity:'.000000', frealquantity:'20.000', 
-//                    frealnum:'.000000', rejectsource:'False', bgsp:'0', btaxcost:'False', binspect:'', sotype:'', iordertype:'', cordercode:'', bexigency:'0', finvalidinnum:'0.000', 
-//                    vouchstate:'0', fininquantity:'0.00', inspecexchrate:'0.00', iexpiratdatecalcu:'0', ivouchrowno:'2', cbsysbarcode:'', iproducttype:'0', 
-//                    bgift:'0', cfactorycode:'002' 
-//                    }
-//	
-//            ]";
-
-
+            #endregion
 
 
             //采购入库单
