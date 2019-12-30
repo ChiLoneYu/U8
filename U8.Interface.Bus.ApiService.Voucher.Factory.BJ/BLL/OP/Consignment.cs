@@ -18,71 +18,32 @@ using U8.Interface.Bus.DBUtility;
 namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
 {
     /// <summary>
-    /// 发货单(HY_DZ_K7_DLLReflect预置的op类)
+    /// 发货单(Mes_Comm_DLLReflect预置的op类)
     /// </summary>
-    public class Consignment : SaleOp
+    public class Consignment : OP.Consignment
     {
 
-        private int tasktype = 0;
+        private int tasktype = 3;
 
         /// <summary>
         /// 来源
         /// </summary>
-        private string sourceCardNo = "17";
-        private string sourceVoucherNoColumnName = "cSoCode";
+        private string sourceCardNo = "";
+        private string sourceVoucherNoColumnName = "";
 
         /// <summary>
         /// 中间
         /// </summary>
-        private string voucherNoColumnName = "cdlcode"; 
-        private string headtable = "MES_CQ_Dispatchlist";
-        private string bodytable = "MES_CQ_Dispatchlists";  
-        private string taskStatusflagColName = "operflag";
+        private string voucherNoColumnName = ""; 
+        private string headtable = "";
+        private string bodytable = "";  
+        private string taskStatusflagColName = "";
 
         /// <summary>
         /// 目标
         /// </summary>
         private string cardNo = "01";
-
-        public override string SetTableName()
-        {
-            return "DispatchList";
-        }
-
-        public override string SetVouchType()
-        {
-            return "9";
-        }
-
-        public override string SetApiAddressAdd()
-        {
-            return "U8API/Consignment/Save";
-        }
-
-        public override string SetApiAddressAudit()
-        {
-            return "U8API/Consignment/Audit";
-        }
-
-        public override string SetApiAddressCancelAudit()
-        {
-            return "U8API/Consignment/Audit";
-        }
-
-        public override string SetApiAddressDelete()
-        {
-            return "U8API/Consignment/Delete";
-        }
-
-        public override string SetApiAddressLoad()
-        {
-            return "U8API/Consignment/Load";
-        }
-        public override string SetApiAddressUpdate()
-        {
-            return "U8API/Consignment/Save";
-        }
-
+          
 
         #region 普通操作
 
@@ -366,21 +327,15 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
 
 
         public override int Update(Model.Synergismlog dt)
-        {
-
-            return Utility.UpdateMainLog(dt, headtable, voucherNoColumnName, taskStatusflagColName, "cerrordesc"); 
-
+        { 
+            return Utility.UpdateMainLog(dt, headtable, voucherNoColumnName, taskStatusflagColName, "cerrordesc");  
         }
 
 
         //修改日志
         public override int Update(Model.Synergismlogdt dt)
-        {
-
-
-            return Utility.UpdateDetailLog(dt, headtable, voucherNoColumnName, taskStatusflagColName, "cerrordesc");
-
-           
+        { 
+            return Utility.UpdateDetailLog(dt, headtable, voucherNoColumnName, taskStatusflagColName, "cerrordesc"); 
         }
 
 

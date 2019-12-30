@@ -20,6 +20,19 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// </summary>
     public abstract class Consignment : SaleOp
     {
+        #region 常量
+ 
+        public override string SetTableName()
+        {
+            return "DispatchList";
+        }
+
+        public override string SetVouchType()
+        {
+            return "9";
+        }
+
+
         public override string SetApiAddressAdd()
         {
             return "U8API/Consignment/Save";
@@ -50,15 +63,8 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         }
 
 
-        public override string SetTableName()
-        {
-            return "DispatchList";
-        }
 
-        public override string SetVouchType()
-        {
-            return "9";
-        }
+        #endregion
 
 
         /// <summary>

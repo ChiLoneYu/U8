@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using U8.Interface.Bus;
 using U8.Interface.Bus.Comm;
 using U8.Interface.Bus.ApiService;
@@ -9,21 +10,18 @@ using U8.Interface.Bus.ApiService;
 using U8.Interface.Bus.ApiService.Model;
 using U8.Interface.Bus.ApiService.BLL;
 using U8.Interface.Bus.ApiService.DAL;
-
 using U8.Interface.Bus.DBUtility;
-using System.Data;
+
 
 namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
 {
-
     /// <summary>
-    /// 采购订单(HY_DZ_K7_DLLReflect预置的op类)
+    /// 销售订单(HY_DZ_K7_DLLReflect预置的op类)
     /// </summary>
-    public class PO_Pomain : OP.PO_Pomain
+    public class SaleOrder : OP.SaleOrder
     {
 
-        private int tasktype = 3;  
- 
+        private int tasktype = 3;
 
         /// <summary>
         /// 来源
@@ -42,12 +40,13 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         private string taskStatusflagColName = "";
         private string opertype = "";
 
+
         /// <summary>
         /// 目标表
         /// </summary> 
         private string cardNo = "88";
-        private string voucherTypeName = "采购订单";
-        private string targetVoucherNoColumnName = "cPOID";
+        private string voucherTypeName = "销售订单";
+        private string targetVoucherNoColumnName = "cSOCode";
 
 
         /// <summary>
@@ -59,50 +58,8 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
             return null;
         }
 
-
-        #region 父类实现
-        ///// <summary>
-        ///// 组织数据
-        ///// </summary>
-        ///// <param name="dt">当前任务节点信息</param>
-        ///// <param name="bd">HY_DZ_K7_DLLReflect 中预置的 data类</param>
-        ///// <returns></returns>
-        //public Model.DealResult MakeData(Model.Synergismlogdt dt, BaseData bd)
-        //{
-        //    Model.DealResult dr = new Model.DealResult();
-        //    Model.APIData apidata = bd as Model.APIData;         //API实体,包括当前任务节点信息
-          
-        //    ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(tasktype);
-
-        //    Model.Synergismlogdt pdt = dtdal.GetPrevious(dt);      //上一任务节点信息
-
-        //    apidata.ConnectInfo = dtdal.GetConnectInfo(dt);   //获取当前结点的数据串连接串
-        //    apidata.Synergismlogdt = dt;
-
-        //    if (!apidata.Dodelete)
-        //    {
-        //        DataSet rdds = SetFromTabet(dt, pdt, apidata);    //上一节点 单据头信息
-        //        DataSet rdsds = SetFromTabets(dt, pdt, apidata);  //上一节点 单据体信息
-
-        //        ApiService.DAL.IFieldcmps fieldcmpdal = ClassFactory.GetIFieldcmpsDAL(apidata.TaskType); //new DAL.Fieldcmps();
-        //        List<Model.Fieldcmps> listfd = fieldcmpdal.GetListFieldcmps(dt, pdt,apidata.TaskType);   //字段对照信息
-        //        ApiService.BLL.U8NameValue u8namevaluebll = new ApiService.BLL.U8NameValue();  //字段赋值
-        //        u8namevaluebll.SetHeadData(apidata, rdds, rdsds, listfd, dt);
-        //        u8namevaluebll.SetBodyData(apidata, rdds, rdsds, listfd, dt);
-
-
-        //        //设置订单关联    
-        //        ApiService.DAL.Common.SetInBody(apidata);
-        //        SetNormalValue(apidata, dt);
-        //    }
-        //    return dr;
-        //}
-
-        #endregion
-
-
-
         #region 单据数据来源
+
         /// <summary>
         /// 表头数据
         /// </summary>
@@ -111,9 +68,9 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="apidata"></param>
         /// <returns></returns>
         public override System.Data.DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
-        { 
+        {
             return dsHead;
-        } 
+        }
 
 
         /// <summary>
@@ -124,11 +81,12 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="apidata"></param>
         /// <returns></returns>
         public override System.Data.DataSet SetFromTabets(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
-        { 
+        {
             return dsBody;
         }
-
         #endregion
+
+
 
 
 
@@ -137,14 +95,14 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
 
         public override Synergismlogdt GetFirst(Synergismlogdt dt)
         {
-            
+
             Model.Synergismlogdt detail = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
             detail.TaskType = tasktype;
             detail.Cvouchertype = sourceCardNo;
             detail.Ilineno = 1;
             detail.Id = "";
             detail.Cstatus = ApiService.DAL.Constant.SynergisnLogDT_Cstatus_Complete;
-            return detail; 
+            return detail;
         }
 
         /// <summary>
@@ -153,7 +111,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="dt"></param>
         /// <returns></returns>
         public override Model.Synergismlogdt GetPrevious(Model.Synergismlogdt dt)
-        {   
+        {
             Model.Synergismlogdt pdt = new Model.Synergismlogdt();
             pdt.Cvouchertype = sourceCardNo;
             pdt.Id = dt.Id;
@@ -180,7 +138,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
                 tmpd.TaskType = tasktype;
                 tmpd.Cstatus = U8.Interface.Bus.ApiService.DAL.Constant.SynerginsLog_Cstatus_NoDeal;
                 tmpd.Isaudit = U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_False; //U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_True; 
-                tmpd.Cvoucherno = ""; 
+                tmpd.Cvoucherno = "";
 
                 logdt.Add(tmpd);
                 return logdt;
@@ -191,7 +149,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
             }
         }
 
- 
+
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
@@ -219,17 +177,18 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         {
             Synergismlog dt = new Synergismlog();
             dt.TaskType = tasktype; 
-
             return dt;
         }
 
 
-    
+
 
         #endregion
 
-        #region 更新任务日志
 
+
+
+        #region 更新任务日志
 
         ///更新任务日志 子表
         public override int Update(Model.Synergismlogdt dt)
@@ -243,7 +202,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
             return 1;
         }
         #endregion
-
+ 
 
     }
 }

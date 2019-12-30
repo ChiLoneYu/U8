@@ -53,6 +53,8 @@
     <Compile Include="BLL\OP\PuStoreIn.cs" />
     <Compile Include="BLL\OP\RdRecord09.cs" />
     <Compile Include="BLL\OP\RdRecord11.cs" />
+    <Compile Include="BLL\OP\SaleOrder.cs" />
+    <Compile Include="BLL\OP\SalesOutStockOrder.cs" />
     <Compile Include="BLL\OP\TransVouch.cs" />
     <Compile Include="BLL\OP\Rdrecord01Ret.cs" />
     <Compile Include="BLL\OP\PU_ArrivalVouch.cs" />

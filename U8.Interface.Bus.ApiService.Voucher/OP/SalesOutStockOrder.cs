@@ -19,6 +19,48 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
     /// </summary>
     public abstract class SalesOutStockOrder : SaleOp
     {
+        #region 
+
+        public override string SetVouchType()
+        {
+            return "32";
+        }
+
+        public override string SetTableName()
+        {
+            return "rdrecord32";
+        }
+
+        public override string SetApiAddressAdd()
+        {
+            return "U8API/saleout/Add";
+        }
+
+        public override string SetApiAddressAudit()
+        {
+            return "U8API/saleout/Audit";
+        }
+
+        public override string SetApiAddressDelete()
+        {
+            return "U8API/saleout/Delete";
+        }
+        public override string SetApiAddressCancelAudit()
+        {
+            return "U8API/saleout/CancelAudit";
+        }
+        public override string SetApiAddressLoad()
+        {
+            return "U8API/saleout/Load";
+        }
+
+        public override string SetApiAddressUpdate()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
 
         /// <summary>
         /// 获取任务队列
@@ -54,6 +96,29 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
             }
             return strCode;
         }
+
+
+        public override bool CheckAuditStatus(string strVoucherNo, string strConn)
+        {
+            string sql = string.Empty;
+            bool bSucc;
+            //edit by wangdd
+            //添加审批流判断条件，有只有非审批流才能直接在日志内删除，审批流必须进入单据
+            sql = "select cHandler  from rdrecord32 where cCode = '" + strVoucherNo + "' and isnull(iswfcontrolled,0)=0 ";
+
+            DbHelperSQLP sqlp = new DbHelperSQLP(strConn);
+            if (string.IsNullOrEmpty(sqlp.GetSingle(sql).NullToString()))
+            {
+                bSucc = false;
+            }
+            else
+            {
+                bSucc = true;
+            }
+            return bSucc;
+        }
+
+
 
         public override Model.DealResult MakeVouch(BaseData bd)
         {
@@ -110,11 +175,8 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
 
         }
 
+        #region 表头表体数据源
 
-        public override string SetVouchType()
-        {
-            return "32";
-        }
 
         public override System.Data.DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
         {
@@ -131,59 +193,10 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
             return U8.Interface.Bus.ApiService.Voucher.DAL.Common.GetSourceDetailDataset(pdt.Cvouchertype, pdt.Cvoucherno, cimodel.Constring);
         }
 
-        public override string SetTableName()
-        {
-            return "rdrecord32";
-        }
-
-        public override string SetApiAddressAdd()
-        {
-            return "U8API/saleout/Add";
-        }
-
-        public override string SetApiAddressAudit()
-        {
-            return "U8API/saleout/Audit";
-        }
-
-        public override string SetApiAddressDelete()
-        {
-            return "U8API/saleout/Delete";
-        }
-        public override string SetApiAddressCancelAudit()
-        {
-            return "U8API/saleout/CancelAudit";
-        }
-        public override string SetApiAddressLoad()
-        {
-            return "U8API/saleout/Load";
-        }
-
-        public override string SetApiAddressUpdate()
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
 
-        public override bool CheckAuditStatus(string strVoucherNo, string strConn)
-        {
-            string sql = string.Empty;
-            bool bSucc;
-            //edit by wangdd
-            //添加审批流判断条件，有只有非审批流才能直接在日志内删除，审批流必须进入单据
-            sql = "select cHandler  from rdrecord32 where cCode = '" + strVoucherNo + "' and isnull(iswfcontrolled,0)=0 ";
 
-            DbHelperSQLP sqlp = new DbHelperSQLP(strConn);
-            if (string.IsNullOrEmpty(sqlp.GetSingle(sql).NullToString()))
-            {
-                bSucc = false;
-            }
-            else
-            {
-                bSucc = true;
-            }
-            return bSucc;
-        }
 
 
         private string cardNo = "";

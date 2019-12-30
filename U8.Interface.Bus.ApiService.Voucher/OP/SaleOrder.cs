@@ -49,6 +49,24 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
             throw new NotImplementedException();
         }
 
+
+        /// <summary>
+        /// 当前单据 主表  表名
+        /// </summary>
+        /// <returns></returns>
+        public override string SetTableName()
+        {
+            return "SO_SOMain";
+        }
+
+        public override string SetVouchType()
+        {
+            return "12";
+        }
+
+      
+
+
         /// <summary>
         /// 获取任务队列
         /// </summary>
@@ -117,21 +135,6 @@ namespace U8.Interface.Bus.ApiService.Voucher.OP
         }
 
 
-        /// <summary>
-        /// 当前单据 主表  表名
-        /// </summary>
-        /// <returns></returns>
-        public override string SetTableName()
-        {
-            return "SO_SOMain";
-        }
-
-        public override string SetVouchType()
-        {
-            return "12";
-        }
-
-      
 
 
         public override string GetCodeorID(string strID, BaseData bd, string codeorid)
