@@ -67,6 +67,7 @@ namespace U8.Interface.Bus.ApiService.DAL
             return ret;
         }
 
+
         /// <summary>
         /// 获取API键值对
         /// </summary>
@@ -1349,7 +1350,179 @@ namespace U8.Interface.Bus.ApiService.DAL
         }
 
 
+        #region SQL档案
 
-          
+
+        /// <summary>
+        /// 根据名称获取对应的值
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string FieldFind(List<Model.U8NameValue> list, string name)
+        {
+            foreach (Model.U8NameValue nv in list)
+            {
+                if (nv.U8FieldName.ToLower() == name.ToLower()) return nv.U8FieldValue;
+            }
+            return string.Empty;
+        }
+
+
+        /// <summary>
+        /// 检查数据是否并户
+        /// wangdd1 2015-05-16
+        /// </summary>
+        /// <param name="sArchType">档案类型：直接传入表名</param>
+        /// <param name="sArchCode">档案主键编码</param>
+        /// <returns></returns>
+        public static bool CheckIsUnite(string sArchType, string sArchCode, ref string sTArchCode)
+        {
+
+            DbHelperSQLP obj = new DbHelperSQLP();
+            string ssql = "";
+            ssql = "select top 1 sTCode from HY_DZ_K7_ArchivesUnite where sFCode='" + sArchCode + "' and sType='" + sArchType + "' and isnull(iStatus,0)=0 order by autoid";
+            System.Data.DataSet ds = obj.Query(ssql);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                sTArchCode = ds.Tables[0].Rows[0]["sTCode"].ToString();
+                return true;
+            }
+
+        }
+
+
+        /// <summary>
+        /// 是否按账套分发职位
+        /// </summary>
+        /// <returns></returns>
+        public static bool AssignJobinfo()
+        {
+
+            DbHelperSQLP obj = new DbHelperSQLP();
+            string ssql = "";
+            ssql = " select cValue from AccInformation with(nolock) WHERE cSysID='K7' and cName = 'AssignJobinfo' ";
+            System.Data.DataSet ds = obj.Query(ssql);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return ds.Tables[0].Rows[0]["cValue"].ToString().Equals("1");
+            }
+
+        }
+
+
+        public static void ErrorMsg<T>(List<T> listT, string Msg)
+        {
+            if (listT.Count == 0)
+                throw new Exception(Msg);
+        }
+
+        /// <summary>
+        /// 获取价格列表前缀
+        /// </summary>
+        /// <returns></returns>
+        public static string GetOrderPrefix(Model.Synergismlogdt dt)
+        {
+            return string.Empty;
+            //if (dt.Cvouchertype == "存货价格列表" || dt.Cvouchertype == "客户价格列表" || dt.Cvouchertype == "供应商存货价格表")
+            //{
+            //    object obj = DbHelperSQL.GetSingle("SELECT ISNULL(cprefix,'') FROM HY_DZ_K7_REGIST WHERE accid NOT IN (SELECT accid FROM HY_DZ_K7_MASTERSET) AND acccode='" + dt.Accid + "' ");
+            //    if (obj == null || obj == DBNull.Value)
+            //        throw new Exception("账套[" + dt.Accname + "]未设置前缀号");
+            //    else if (string.IsNullOrEmpty(obj.ToString()))
+            //        throw new Exception("账套[" + dt.Accname + "]未设置前缀号");
+            //    else
+            //        return obj.ToString();
+            //}
+            //else
+            //{
+            //    return "";
+            //}
+        }
+
+
+        /// <summary>
+        /// 获取项目档案表名
+        /// </summary>
+        /// <param name="citem_class"></param>
+        /// <param name="constring"></param>
+        /// <returns></returns>
+        public static string GetItemTable(string citem_class)
+        {
+            object tablename;
+            DbHelperSQLP help = new DbHelperSQLP();
+            tablename = help.GetSingle("SELECT ctable FROM fitem WHERE citem_class='" + citem_class + "' ");
+            if (tablename == null || tablename == DBNull.Value) return string.Empty;
+            else return tablename.ToString();
+        }
+
+
+        /// <summary>
+        /// 判断是否存在该数据
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="field"></param>
+        /// <param name="keyvalue"></param>
+        /// <param name="connectstring"></param>
+        /// <returns></returns>
+        public static bool RelationExist(Model.RelationDt relationdt, Model.SQLData sqldata)
+        {
+            string cmdText;
+            DbHelperSQLP sql = new DbHelperSQLP(sqldata.ConnectInfo.Constring);
+     
+            if (relationdt.Tablename.ToLower() == "fitemss**class")
+            {
+                string tablename = relationdt.Tablename.Replace("fitemss**", sqldata.TableName);
+                if (sql.Exists(" SELECT 1 FROM sysobjects WHERE name = '" + tablename + "' AND type='U'"))
+                    cmdText = string.Format("select 1 from {0}  where {1}='{2}'", tablename, relationdt.Field, relationdt.Keyvalue);
+                else
+                    return false;
+            }
+            else if (relationdt.Tablename.ToLower().Equals("bas_part"))
+            {
+                return false;
+            }
+            else
+            {
+                cmdText = string.Format("select 1 from {0}  where {1}='{2}'", relationdt.Tablename, relationdt.Field, relationdt.Keyvalue);
+            }
+            return sql.Exists(cmdText);
+
+        }
+
+        public static void ErrorMsg(DataSet ds, string Msg)
+        {
+
+            if (ds == null) throw new Exception(Msg);
+            if (ds.Tables.Count == 0) throw new Exception(Msg);
+            if (ds.Tables[0].Rows.Count == 0)
+                throw new Exception(Msg);
+        }
+
+
+
+        /// <summary>
+        /// 日志错误
+        /// </summary>
+        /// <param name="Err"></param>
+        public static void WriteWinLog(string Err)
+        {
+            EventLog.WriteEntry("U8.Interface.Bus", Err, EventLogEntryType.Error, 88, 88);
+        }
+
+
+    
+
+
+        #endregion
+
     }
 }

@@ -1568,47 +1568,66 @@ namespace U8.Interface.Bus.ApiService.Setting
         {
             U8.Interface.Bus.ApiService.BLL.InvokeUtility op = new U8.Interface.Bus.ApiService.BLL.InvokeUtility();
 
+            string cardNo; 
             string headJson;
             string bodyJson;
 
             //采购订单  88
-            //string headJson = "[{ivtid:'8173' ,  poid:'' ,cbustype:'普通采购' ,cpoid:'0000000044' ,dpodate:'2015-01-11' ,cvencode:'ven_888' ,nflat:'1' ,itaxrate:'17' ,cstate:'' ,idiscounttaxtype:'0' ,cvenabbname:'ven_888' ,cexch_name:'人民币' ,cmaker:'demo' ,ireturncount:'' ,iverifystateex:'' ,iswfcontrolled:'' ,cverifier:'' ,cvenname:'ven_888' , clocker:'' ,cmaketime:'' ,caudittime:'' ,cauditdate:'' ,bstorageorder:'True' ,iprintcount:'0' ,csysbarcode:'' ,bGCTransforming:'False' ,editprop:'' , c114:'000000000099080f' ,c117:'人民币' ,c118:'00000000003bdd23' ,c125:'ven_888' ,c126:'000000000089fded' ,c136:'1000000044' ,  myphone:'' ,myzip:'' ,myfax:'' ,cchangverifier:'' ,cchanger:'' ,ccloser:'' ,cchangauditdate:'' ,cchangaudittime:'' ,cbg_auditor:'' ,ibg_overflag:'' ,creviser:'' ,cmodifydate:'' ,cmodifytime:'' ,controlresult:'' ,cbg_audittime:'' ,dclosedate:'' ,dclosetime:'' ,iflowid:'' ,cflowname:'' ,cappcode:'' ,ipresent:'10040.00'}]";
-            //string bodyJson = "[{ id:'', poid:'1000000044', iappids:'', cinvcode:'01019002082', cinvname:'包装材料',   iquantity:'20.0000000000', darrivedate:'2015-01-20T00:00:00', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', iinvexchrate:'.00000000', ccomunitcode:'0108', ipertaxrate:'17.000000', ireceivedqty:'20.0000000000', ireceivedmoney:'0', bgsp:'0',   ivouchrowno:'1', csrpolicy:'PE', irequiretrackstyle:'0', cinvccode:'0101', binvtype:'False', bservice:'False', cbsysbarcode:'', cplanmethod:'R', bgift:'0', cfactorycode:'001',    cInvSubCode:'01019002082' }]";
+            //cardNo = "88";
+            // headJson = "[{ivtid:'8173' ,  poid:'' ,cbustype:'普通采购' ,cpoid:'0000000044' ,dpodate:'2015-01-11' ,cvencode:'ven_888' ,nflat:'1' ,itaxrate:'17' ,cstate:'' ,idiscounttaxtype:'0' ,cvenabbname:'ven_888' ,cexch_name:'人民币' ,cmaker:'demo' ,ireturncount:'' ,iverifystateex:'' ,iswfcontrolled:'' ,cverifier:'' ,cvenname:'ven_888' , clocker:'' ,cmaketime:'' ,caudittime:'' ,cauditdate:'' ,bstorageorder:'True' ,iprintcount:'0' ,csysbarcode:'' ,bGCTransforming:'False' ,editprop:'' , c114:'000000000099080f' ,c117:'人民币' ,c118:'00000000003bdd23' ,c125:'ven_888' ,c126:'000000000089fded' ,c136:'1000000044' ,  myphone:'' ,myzip:'' ,myfax:'' ,cchangverifier:'' ,cchanger:'' ,ccloser:'' ,cchangauditdate:'' ,cchangaudittime:'' ,cbg_auditor:'' ,ibg_overflag:'' ,creviser:'' ,cmodifydate:'' ,cmodifytime:'' ,controlresult:'' ,cbg_audittime:'' ,dclosedate:'' ,dclosetime:'' ,iflowid:'' ,cflowname:'' ,cappcode:'' ,ipresent:'10040.00'}]";
+            // bodyJson = "[{ id:'', poid:'1000000044', iappids:'', cinvcode:'01019002082', cinvname:'包装材料',   iquantity:'20.0000000000', darrivedate:'2015-01-20T00:00:00', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', iinvexchrate:'.00000000', ccomunitcode:'0108', ipertaxrate:'17.000000', ireceivedqty:'20.0000000000', ireceivedmoney:'0', bgsp:'0',   ivouchrowno:'1', csrpolicy:'PE', irequiretrackstyle:'0', cinvccode:'0101', binvtype:'False', bservice:'False', cbsysbarcode:'', cplanmethod:'R', bgift:'0', cfactorycode:'001',    cInvSubCode:'01019002082' }]";
 
 
             //采购到货单  26
             #region   采购到货单  26
-            headJson = @"[{
-                    mes_ddate:'2015-01-11', cptcode:'03', cptname:'普通采购', mes_cvencode:'03003',  mes_cdepcode:'0401',  cpocode:'',
-                    cpersoncode:'00044',   cexch_name:'人民币', cexch_code:'RMB', iexchrate:'1', cbustype:'普通采购', cmaker:'demo', bnegative:'0', idiscounttaxtype:'0',  
-                    itaxrate:'17', ibilltype:'0', cmaketime:'', cmodifytime:'', cmodifydate:'', creviser:'', cauditdate:'', caudittime:'', cverifier:'', iverifystateex:'', 
-                    iswfcontrolled:'',   bstoragearrivalorder:'1', iprintcount:'0', csysbarcode:'',  cInvCode:'01019002082',  ipresent:'10040.00'
-               }]";
-            bodyJson = @"[
-                    {   
-                    mes_cwhcode:'',    mes_cinvcode:'01019002082',   ccomunitcode:'0108', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', 
-                    ioritaxcost:'4.00', mes_iquantity:100.00, ioricost:'3.4200', iorimoney:'341.88', ioritaxprice:'58.12', 
-                    iorisum:'400', icost:'3.42', imoney:'341.88', itaxprice:'58.12', isum:'400.00',   itaxrate:'17',  
-                    fvalidquantity:'100.00', fvalidnum:'0.00', fvalidinquan:'100.0000', finvalidinquan:'0.00',  
-                    rejectsource:'False', bgsp:'0', btaxcost:'False',
-                    frealquantity:'100.00', cfactorycode:'002',editprop:'A'
-                    } ,
-                    {   
-                    mes_cwhcode:'',    mes_cinvcode:'01019002082',   ccomunitcode:'0108', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', 
-                    ioritaxcost:'4.00', mes_iquantity:100.00, ioricost:'3.4200', iorimoney:'341.88', ioritaxprice:'58.12', 
-                    iorisum:'400', icost:'3.42', imoney:'341.88', itaxprice:'58.12', isum:'400.00',   itaxrate:'17',  
-                    fvalidquantity:'100.00', fvalidnum:'0.00', fvalidinquan:'100.0000', finvalidinquan:'0.00',  
-                    rejectsource:'False', bgsp:'0', btaxcost:'False',
-                    frealquantity:'100.00', cfactorycode:'002',editprop:'A'
-                    } 
-	
-            ]";
+//            cardNo = "26";
+//            headJson = @"[{
+//                    mes_ddate:'2015-01-11', cptcode:'03', cptname:'普通采购', mes_cvencode:'03003',  mes_cdepcode:'0401',  cpocode:'',
+//                    cpersoncode:'00044',   cexch_name:'人民币', cexch_code:'RMB', iexchrate:'1', cbustype:'普通采购', cmaker:'demo', bnegative:'0', idiscounttaxtype:'0',  
+//                    itaxrate:'17', ibilltype:'0', cmaketime:'', cmodifytime:'', cmodifydate:'', creviser:'', cauditdate:'', caudittime:'', cverifier:'', iverifystateex:'', 
+//                    iswfcontrolled:'',   bstoragearrivalorder:'1', iprintcount:'0', csysbarcode:'',  cInvCode:'01019002082',  ipresent:'10040.00'
+//               }]";
+//            bodyJson = @"[
+//                    {   
+//                    mes_cwhcode:'',    mes_cinvcode:'01019002082',   ccomunitcode:'0108', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', 
+//                    ioritaxcost:'4.00', mes_iquantity:100.00, ioricost:'3.4200', iorimoney:'341.88', ioritaxprice:'58.12', 
+//                    iorisum:'400', icost:'3.42', imoney:'341.88', itaxprice:'58.12', isum:'400.00',   itaxrate:'17',  
+//                    fvalidquantity:'100.00', fvalidnum:'0.00', fvalidinquan:'100.0000', finvalidinquan:'0.00',  
+//                    rejectsource:'False', bgsp:'0', btaxcost:'False',
+//                    frealquantity:'100.00', cfactorycode:'002',editprop:'A'
+//                    } ,
+//                    {   
+//                    mes_cwhcode:'',    mes_cinvcode:'01019002082',   ccomunitcode:'0108', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', 
+//                    ioritaxcost:'4.00', mes_iquantity:100.00, ioricost:'3.4200', iorimoney:'341.88', ioritaxprice:'58.12', 
+//                    iorisum:'400', icost:'3.42', imoney:'341.88', itaxprice:'58.12', isum:'400.00',   itaxrate:'17',  
+//                    fvalidquantity:'100.00', fvalidnum:'0.00', fvalidinquan:'100.0000', finvalidinquan:'0.00',  
+//                    rejectsource:'False', bgsp:'0', btaxcost:'False',
+//                    frealquantity:'100.00', cfactorycode:'002',editprop:'A'
+//                    } 
+//	
+//            ]";
             #endregion
 
 
-            //采购入库单
-            //string headJson = "[{ivtid:'8173' ,  poid:'' ,cbustype:'普通采购' ,cpoid:'0000000044' ,dpodate:'2015-01-11' ,cvencode:'ven_888' ,nflat:'1' ,itaxrate:'17' ,cstate:'' ,idiscounttaxtype:'0' ,cvenabbname:'ven_888' ,cexch_name:'人民币' ,cmaker:'demo' ,ireturncount:'' ,iverifystateex:'' ,iswfcontrolled:'' ,cverifier:'' ,cvenname:'ven_888' , clocker:'' ,cmaketime:'' ,caudittime:'' ,cauditdate:'' ,bstorageorder:'True' ,iprintcount:'0' ,csysbarcode:'' ,bGCTransforming:'False' ,editprop:'' , c114:'000000000099080f' ,c117:'人民币' ,c118:'00000000003bdd23' ,c125:'ven_888' ,c126:'000000000089fded' ,c136:'1000000044' ,  myphone:'' ,myzip:'' ,myfax:'' ,cchangverifier:'' ,cchanger:'' ,ccloser:'' ,cchangauditdate:'' ,cchangaudittime:'' ,cbg_auditor:'' ,ibg_overflag:'' ,creviser:'' ,cmodifydate:'' ,cmodifytime:'' ,controlresult:'' ,cbg_audittime:'' ,dclosedate:'' ,dclosetime:'' ,iflowid:'' ,cflowname:'' ,cappcode:'' ,ipresent:'10040.00'}]";
-            //string bodyJson = "[{ id:'', poid:'1000000044', iappids:'', cinvcode:'01019002082', cinvname:'包装材料',   iquantity:'20.0000000000', darrivedate:'2015-01-20T00:00:00', cinvm_unit:'PCS', igrouptype:'0', cgroupcode:'01', iinvexchrate:'.00000000', ccomunitcode:'0108', ipertaxrate:'17.000000', ireceivedqty:'20.0000000000', ireceivedmoney:'0', bgsp:'0',   ivouchrowno:'1', csrpolicy:'PE', irequiretrackstyle:'0', cinvccode:'0101', binvtype:'False', bservice:'False', cbsysbarcode:'', cplanmethod:'R', bgift:'0', cfactorycode:'001',    cInvSubCode:'01019002082' }]";
+            //采购入库单 24
+            cardNo = "24";
+            headJson = @"[{id:'1000000001', brdflag:'1', cvouchtype:'01', cbustype:'普通采购', csource:'库存', mes_cwhcode:'30', bincost:'True', 
+                       caddcode:'0401', ccode:'0000000001', mes_crdcode:'11',  cdepcode:'0401', cpersoncode:'00043',   
+                       mes_cvencode:'01002',  
+                       cmaker:'demo', pro_ddate:'2015-01-11T00:00:00',dnmaketime:'2015-01-11T01:00:00',
+                       idiscounttaxtype:'0', vt_id:'27', bisstqc:'False', bpufirst:'False', biafirst:'False', bomfirst:'0', 
+                       itaxrate:'17.000000', iexchrate:'1', cexch_name:'人民币', 
+                       iswfcontrolled:'0', bredvouch:'0',  bcredit:'0', iPrintCount:'0' }]";
+            bodyJson = @"[{ 
+                        autoid:'', id:'10000000001', cinvcode:'01019002067', cinvm_unit:'PCS', bservice:'False', cinvccode:'0101', binvbatch:'False', 
+                        mes_iquantity:'500.0000000000', iunitcost:'1.4100000000', iprice:'705', iaprice:'705', iflag:'0', isnum:'.0000000000', isquantity:'.0000000000', 
+                        imoney:'0', cposition:'', binvtype:'False', facost:'1.4100000000', cposname:'',
+                        ioritaxcost:'1.650000', ioricost:'1.410000', iorimoney:'705', ioritaxprice:'119.85', iorisum:'824.85', itaxprice:'119.85', isum:'824.85', 
+                        btaxcost:'False', itaxrate:'17.000000', 
+                        ismaterialfee:'0', isprocessfee:'0', imatsettlestate:'0', isotype:'0', iordertype:'0', bcosting:'True', bvmiused:'False', iexpiratdatecalcu:'0',  
+                        cinvouchtype:'', bmergecheck:'False', iproducttype:'0', bgift:'0', igcgrouptype:'0', cgcgroupcode:'01', 
+                        cWhCodeforBack:'30', avaInQuantity:'0', avaInNum:'0'
+	                    }]";
             
 
 
@@ -1619,7 +1638,7 @@ namespace U8.Interface.Bus.ApiService.Setting
             dsHead.Tables.Add(dtHead);
             dsBody.Tables.Add(dtBody);
 
-            op.Run("26", dtHead.DataSet, dtBody.DataSet);
+            op.Run(cardNo, dtHead.DataSet, dtBody.DataSet);
             //Exec_Task();
         }
 

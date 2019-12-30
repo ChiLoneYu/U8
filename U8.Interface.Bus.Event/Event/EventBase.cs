@@ -337,8 +337,11 @@ namespace U8.Interface.Bus.Event.SyncAdapter
                         string te = U8.Interface.Bus.Config.ConfigUtility.EventBizDllName;
                         break;
 
-                    //采购入库单
-
+                    //采购入库单d
+                    case "u8api/pustorein/save_before":
+                    case "u8api/pustorein/save_after":
+                        string te1 = U8.Interface.Bus.Config.ConfigUtility.EventBizDllName;
+                        break;
                          
                 }
                  

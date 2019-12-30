@@ -18,7 +18,7 @@ namespace U8.Interface.Bus.ApiService.DAL.TaskLog
         Model.ConnectInfo getConnectStr(Model.Synergismlogdt dt);
 
         Model.Synergismlogdt GetModel(string autoid);
-        Model.Synergismlogdt GetModel(string autoid, BLL.BaseOp op);
+        //Model.Synergismlogdt GetModel(string autoid, BLL.BaseOp op);
 
         /// <summary>
         /// 获取上一条

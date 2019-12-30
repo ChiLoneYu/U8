@@ -91,10 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\InvokeUtility.cs" />
+    <Compile Include="BLL\OP\SQL_Arch\SQLOP.cs" />
     <Compile Include="BLL\OP\SupplyChainOp.cs" />
     <Compile Include="BLL\OP\BaseOp.cs" />
     <Compile Include="BLL\ClassFactory.cs" />
     <Compile Include="BLL\Common.cs" />
+    <Compile Include="BLL\OP\SQL_Arch\baseDAL.cs" />
     <Compile Include="BLL\TaskUtility.cs" />
     <Compile Include="BLL\OP\PurchaseOp.cs" />
     <Compile Include="BLL\OP\SaleOp.cs" />
@@ -123,12 +125,21 @@
     <Compile Include="DAL\FixValue.cs" />
     <Compile Include="DAL\Function.cs" />
     <Compile Include="DAL\Regist.cs" />
+    <Compile Include="DAL\SQL_Arch\baseDAL.cs" />
+    <Compile Include="DAL\SQL_Arch\Masterupds.cs" />
+    <Compile Include="DAL\SQL_Arch\Relation.cs" />
+    <Compile Include="DAL\SQL_Arch\Relations.cs" />
     <Compile Include="DAL\TaskLog\IShowLog.cs" />
     <Compile Include="DAL\TaskLog\ITaskLogDetail.cs" />
     <Compile Include="DAL\TaskLog\ITaskLogMain.cs" />
     <Compile Include="DAL\TaskLog\IShowLogDt.cs" />
     <Compile Include="Model\BodyData.cs" />
+    <Compile Include="Model\SQL\Masterupds.cs" />
+    <Compile Include="Model\SQL\Relation.cs" />
+    <Compile Include="Model\SQL\RelationDt.cs" />
+    <Compile Include="Model\SQL\Relations.cs" />
     <Compile Include="Model\ServiceModel.cs" />
+    <Compile Include="Model\SQL\SQLData.cs" />
     <Compile Include="Model\TaskLogFactory\CQ\ShowLog.cs" />
     <Compile Include="Model\TaskLogFactory\ShowLog.cs" />
     <Compile Include="Model\TaskLogFactory\ShowLogDt.cs" />
@@ -158,6 +169,24 @@
       <Project>{5022ADAD-A6FC-4C98-A068-E35D1F98B98D}</Project>
       <Name>U8.Interface.Bus.Comm</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB1">
+      <Guid>{00000206-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="U8SrvTrans">
+      <Guid>{14E97510-4C3F-4A31-8E69-2A1EF701E041}</Guid>
+      <VersionMajor>11</VersionMajor>
+      <VersionMinor>49</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\Voucher\" />

@@ -474,7 +474,7 @@ namespace U8.Interface.Bus.ApiService.BLL
                 DAL.TaskLog.ITaskLogDetail daldt = ClassFactory.GetITaskLogDetailDAL(tasktype); 
                 BLL.TaskLog.ITaskLogDetail logdtbll = ClassFactory.GetITaskLogDetailBLL(tasktype);
 
-                Model.Synergismlogdt dt = daldt.GetModel(autoid, null);
+                Model.Synergismlogdt dt = daldt.GetModel(autoid);
 
 
                 #region 协同 校验

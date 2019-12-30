@@ -22,22 +22,22 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
     /// </summary>
     public class PuStoreIn : OP.PuStoreIn
     {
-        private int tasktype = 2;
+        private int tasktype = 3;
 
 
         /// <summary>
         /// 中间
         /// </summary>
-        private string headtable = "MES_CQ_rdrecord01";
-        private string bodytable = "mes_cq_rdrecords01"; 
-        private string taskStatusflagColName = "operflag";
-        private string voucherNoColumnName = "cRdCode";
-        private string errordescColumnName = "cerrordesc"; 
+        private string headtable = "";
+        private string bodytable = ""; 
+        private string taskStatusflagColName = "";
+        private string voucherNoColumnName = "";
+        private string errordescColumnName = ""; 
 
         /// <summary>
         /// 来源
         /// </summary>
-        private string sourceCardNo = "26";
+        private string sourceCardNo = "";
 
         /// <summary>
         /// 目标
@@ -65,7 +65,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
                 v.CardNo = cardNo;
                 v.VoucherName = "采购到货单";
                 t.VouchType = v;
-                t.taskType = 0;   //MES接口任务  
+                t.taskType = tasktype;   //MES接口任务  
                 t.OperType = (int)dt.Rows[i]["OperType"];
                 try
                 {
@@ -96,6 +96,11 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
 
 
 
+        #region 获取结点
+
+
+
+
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
@@ -103,7 +108,8 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <returns></returns>
         public override Model.Synergismlog GetLogModel(string autoid)
         {
-            Model.Synergismlog tmpd = new Synergismlog(); 
+            Model.Synergismlog tmpd = new Synergismlog();
+            tmpd.TaskType = tasktype;
             tmpd.Id = autoid;
             tmpd.Cvouchertype = cardNo; 
             tmpd.Cstatus = U8.Interface.Bus.ApiService.DAL.Constant.SynerginsLog_Cstatus_NoDeal;
@@ -126,6 +132,7 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         public override Model.Synergismlogdt GetModel(string autoid)
         {
             Model.Synergismlogdt tmpd =  new Model.Synergismlogdt();
+            tmpd.TaskType = tasktype;
             tmpd.Autoid = autoid;
             tmpd.Id = autoid;
             tmpd.Cvouchertype = cardNo;
@@ -146,20 +153,14 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
 
 
         public override Synergismlogdt GetFirst(Synergismlogdt dt)
-        {
-            string sourceCodeColName = "dhCode";
-
-            Model.Synergismlogdt fdt = new Model.Synergismlogdt();
-            fdt.Cvouchertype = sourceCardNo;
-            fdt.Id = dt.Id;
-            fdt.Ilineno = 1;
-            DataSet ds = DbHelperSQL.Query("SELECT " + sourceCodeColName + " FROM " + bodytable + " with(nolock) WHERE ID = " + U8.Interface.Bus.Comm.Convert.ConvertDbValueFromPro(dt.Id,"string"));
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                fdt.Cvoucherno = ds.Tables[0].Rows[i][sourceCodeColName].ToString();
-                fdt.Autoid = dt.Id;
-            }
-            return fdt;
+        { 
+            Model.Synergismlogdt detail = new U8.Interface.Bus.ApiService.Model.Synergismlogdt();
+            detail.TaskType = tasktype;
+            detail.Cvouchertype = sourceCardNo;
+            detail.Ilineno = 1;
+            detail.Id = "";
+            detail.Cstatus = ApiService.DAL.Constant.SynergisnLogDT_Cstatus_Complete;
+            return detail;
 
         }
 
@@ -169,27 +170,13 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="dt"></param>
         /// <returns></returns>
         public override Model.Synergismlogdt GetPrevious(Model.Synergismlogdt dt)
-        {
-
-            string sourceCodeColName = "dhCode";
-
-            if (dt.Cvouchertype == cardNo)
-            {
-                Model.Synergismlogdt pdt = new Model.Synergismlogdt();
-                pdt.Cvouchertype = sourceCardNo;
-                pdt.Id = dt.Id;
-                DataSet ds = DbHelperSQL.Query("SELECT " + sourceCodeColName + " FROM " + bodytable + " with(nolock) WHERE ID = " + U8.Interface.Bus.Comm.Convert.ConvertDbValueFromPro(dt.Id,"string") );
-                for (int i = 0; i < ds.Tables[0].Rows.Count;i++ )
-                {
-                    pdt.Cvoucherno = ds.Tables[0].Rows[i][sourceCodeColName].ToString();
-                    //pdt.Autoid = null;
-                } 
-                return pdt;
-            }
-            else
-            {
-                return null;
-            }
+        { 
+            Model.Synergismlogdt pdt = new Model.Synergismlogdt();
+            pdt.Cvouchertype = sourceCardNo;
+            pdt.Id = dt.Id;
+            pdt.Cvoucherno = "";
+            pdt.TaskType = tasktype;
+            return pdt;
         }
 
 
@@ -199,37 +186,32 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="dt"></param>
         /// <returns></returns>
         public override List<Model.Synergismlogdt> GetNext(Model.Synergismlogdt dt)
-        { 
+        {
             List<Model.Synergismlogdt> logdt = new List<U8.Interface.Bus.ApiService.Model.Synergismlogdt>();
             if (dt.Ilineno == 1)
             {
-                Model.Synergismlogdt tmpd =  new Model.Synergismlogdt();
+                Model.Synergismlogdt tmpd = new Model.Synergismlogdt();
                 tmpd.Id = dt.Id;
                 tmpd.Cvouchertype = cardNo;
                 tmpd.Ilineno = 2;
                 tmpd.TaskType = tasktype;
                 tmpd.Cstatus = U8.Interface.Bus.ApiService.DAL.Constant.SynerginsLog_Cstatus_NoDeal;
-                tmpd.Isaudit = U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_True;
+                tmpd.Isaudit = U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_True; //U8.Interface.Bus.ApiService.DAL.Constant.SynergisnLogDT_Isaudit_False; 
+                tmpd.Cvoucherno = "";
 
-                DataSet ds = DbHelperSQL.Query("SELECT t.cRdCode,t.id,t.opertype FROM " + headtable + " t with(nolock)  WHERE t.id = " + U8.Interface.Bus.Comm.Convert.ConvertDbValueFromPro(dt.Id,"string") );
-           
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                {
-                    tmpd.Cvoucherno = ds.Tables[0].Rows[i]["cRdCode"].ToString();
-                    tmpd.Autoid = ds.Tables[0].Rows[i]["id"].ToString(); // int.Parse(ds.Tables[0].Rows[i]["id"].ToString());
-                    tmpd.Cdealmothed = int.Parse(ds.Tables[0].Rows[i]["opertype"].ToString()) + 1; // 0(自动生单/自动审核) 1增 2修改 3删
-                } 
-                
                 logdt.Add(tmpd);
                 return logdt;
             }
             else
             {
                 return logdt;
-            }        
+            }
         }
 
+        #endregion
 
+
+        #region 组织来源数据
 
         /// <summary>
         /// 获取来源表头数据
@@ -239,35 +221,8 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="apidata"></param>
         /// <returns></returns>
         public override System.Data.DataSet SetFromTabet(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
-        {
-
-            string _sourcetablenameh = "pu_ArrHead";
-            string _sourcetablenameb = "pu_ArrBody";
-
-            ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType);
-            Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
-
-            string sql = "select t.*,"; 
-            sql += " t.id as iarriveid ,"; //到货单id
-            sql += " t.id as ipurarriveid ,"; //采购到货单id
-            sql += " '' as ipurorderid ,";  //采购订单ID
-            sql += " lt.cvencode as MES_cvencode,"; 
-            sql += " '" + System.DateTime.Now.ToString(SysInfo.dateFormat) + "' as pro_ddate ";   //入库日期
-            sql += ",'" + System.DateTime.Now.ToString(SysInfo.datetimeFormat) + "' as dnmaketime, ";   //制单时间
-            sql += " lt.cRdCode as cCode ,";
-            sql += " lt.cWhCode as MES_cWhCode,lt.cRdStyleCode as MES_cRdCode,lt.cDepCode as MES_cDepCode,lt.cPersonCode as MES_cPersonCode , ";
-            sql += " lb.dhCode as MES_dhCode, ";
-            sql += " '" + apidata.ConnectInfo.UserId + "'  as PRO_CMaker  ";
-            sql += " from  pu_ArrHead t with(nolock) ";
-            sql += " left join " + bodytable + " lb with(nolock) on lb.dhCode = t.ccode ";
-            sql += " left join " + headtable + " lt with(nolock) on lt.id = lb.id where lt.id ='" + pdt.Id + "' ";
-            //sql += " from " + _sourcetablenameb + " b with(nolock) inner join  " + _sourcetablenameh + " t with(nolock) on b.id = t.id inner join " + bodytable + " lb with(nolock) on lb.dhid = b.autoid inner join " + headtable + " lt with(nolock) on lt.id = lb.id where lt.id ='" + pdt.Id + "' ";
-            
-            DbHelperSQLP help = new DbHelperSQLP(cimodel.Constring);
-            DataSet ds = help.Query(sql);
-            ApiService.BLL.Common.ErrorMsg(ds, "未能获取采购到货单表头信息");
-            return ds;
- 
+        { 
+            return dsHead;
         }
 
   
@@ -279,102 +234,30 @@ namespace U8.Interface.Bus.ApiService.Voucher.Factory.BJ
         /// <param name="apidata"></param>
         /// <returns></returns>
         public override System.Data.DataSet SetFromTabets(Model.Synergismlogdt dt, Model.Synergismlogdt pdt, Model.APIData apidata)
-        {
-
-            string _sourcetablenameh = "pu_ArrHead";
-            string _sourcetablenameb = "pu_ArrBody";
-
-            ApiService.DAL.TaskLog.ITaskLogDetail dtdal = ClassFactory.GetITaskLogDetailDAL(apidata.TaskType);  //ClassFactory.GetITaskLogMain(3);;
-            Model.ConnectInfo cimodel = dtdal.GetConnectInfo(pdt);
-            string sql = "select b.*,"; 
-            sql += " lt.cWhCode as MES_cWhCode,lt.cRdStyleCode as MES_cRdCode,lt.cDepCode as MES_cDepCode,lt.cPersonCode as MES_cPersonCode, ";
-            sql += " lt.cvencode as MES_cvencode,"; 
-            sql += " CASE lb.opertype WHEN 0 THEN 'A' WHEN 1 THEN 'M' WHEN '2' THEN 'D' ELSE 'A' END as editprop, ";
-            sql += " lb.iquantity as MES_iquantity   ";
-            sql += " from " + _sourcetablenameb + " b with(nolock) ";
-            sql += " inner join  " + _sourcetablenameh + " t with(nolock) on b.id = t.id ";
-            sql += " inner join " + bodytable + " lb with(nolock) on lb.dhid = b.autoid ";
-            sql += " inner join " + headtable + " lt with(nolock) on lt.id = lb.id ";
-            sql += " where lt.id ='" + pdt.Id + "' ";
-             
-            DbHelperSQLP help = new DbHelperSQLP(cimodel.Constring);
-            DataSet ds = help.Query(sql);
-            ApiService.BLL.Common.ErrorMsg(ds, "未能获取采购到货单表体信息");
-            return ds;
-        }
- 
-          
-        #region update  log
-
-
-        public override int Update(Model.Synergismlog dt)
         { 
-            DateTime? finishTime = new DateTime?(); 
-            string operflag = dt.Cstatus;
-            
-            if (operflag == Constant.SynerginsLog_Cstatus_Complete || operflag == Constant.SynerginsLog_Cstatus_Wait)
-            {
-                operflag = "1";
-                finishTime = DateTime.Now;
-            }
-            else if (operflag == Constant.SynerginsLog_Cstatus_Error)
-            {
-                operflag = "3";
-            }
-            else if (operflag == Constant.SynerginsLog_Cstatus_NoDeal)
-            {
-                operflag = "0";
-            }
-            else if (operflag == Constant.SynerginsLog_Cstatus_Scrap)
-            {
-                operflag = "4";
-            }
-            else
-            {
-                operflag = "2";
-            }
-             
- 
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("update " + headtable + " set ");
-            if (!string.IsNullOrEmpty(dt.Cvoucherno))
-            {
-                strSql.Append(" cRdCode = '" + dt.Cvoucherno + "',  ");
-
-            } 
-            if (finishTime == null)
-            {
-                strSql.Append(" finishTime = null,  ");
-            }
-            else
-            {
-                strSql.Append(" finishTime = '" + finishTime + "',  ");
-            }
-            strSql.Append(" operflag = " + operflag + "  ");
-            strSql.Append(" where id= " + U8.Interface.Bus.Comm.Convert.ConvertDbValueFromPro(dt.Id,"string") + " ");
-
-            int rows = DbHelperSQL.ExecuteSql(strSql.ToString());
-
-            return rows;
-
-
+            return dsBody;
         }
-
-
-        //修改日志
-        public override int Update(Model.Synergismlogdt dt)
-        {
- 
-            return Utility.UpdateDetailLog(dt, headtable, voucherNoColumnName, taskStatusflagColName, errordescColumnName);
-          
-        }
-
 
         #endregion
 
 
- 
- 
+        #region update  log
+
+
+        public override int Update(Model.Synergismlog log)
+        {
+            return 1;
+            //return Utility.UpdateMainLog(log, headtable, voucherNoColumnName, taskStatusflagColName, errordescColumnName);
+        }
+
+        //修改日志
+        public override int Update(Model.Synergismlogdt dt)
+        {
+            return 1;
+            // return Utility.UpdateDetailLog(dt, headtable, voucherNoColumnName, taskStatusflagColName, errordescColumnName);
+        }
+
+        #endregion
 
 
     }

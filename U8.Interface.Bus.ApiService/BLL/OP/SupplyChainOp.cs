@@ -135,6 +135,7 @@ namespace U8.Interface.Bus.ApiService.BLL
             if (dr.ResultNum < 0) return dr; 
             string strRow;
             {
+                string strFactoryCode = "cfactorycode";
                 U8ApiBroker ubOrder = null;
                 dr = GetU8ApiBroker(apidata, u8Login, out ubOrder, "add");
                 MSXML2.IXMLDOMDocument2 xmlHead = broker.GetBoParam("DomHead").ToRSDOM();
@@ -164,6 +165,11 @@ namespace U8.Interface.Bus.ApiService.BLL
                         strRow = "irowno";
                         break;
                 }
+               
+                #endregion
+
+                #region 工厂编码
+                //工厂编码特殊处理，解决部分环境BO不支持cfactorycode问题
                 for (int i = 0; i < lstx.length; i++)
                 {
                     xmle = lstx[i].attributes.getNamedItem(strRow);
@@ -177,7 +183,23 @@ namespace U8.Interface.Bus.ApiService.BLL
                     {
                         xmle.nodeValue = (i + 1).ToString();
                     }
+                    if (apidata.BodyData[i].FindIndex(t => t.U8FieldName.ToLower() == strFactoryCode) >= 0)
+                    {
+                        //工厂编码
+                        xmle = lstx[i].attributes.getNamedItem(strFactoryCode);
+                        if (xmle == null)
+                        {
+                            xmle = xmlBody.createNode(System.Xml.XmlNodeType.Attribute, strFactoryCode, null);
+                            xmle.nodeValue = apidata.BodyData[i].Find(t => t.U8FieldName.ToLower() == strFactoryCode).U8FieldValue;
+                            lstx[i].attributes.setNamedItem(xmle);
+                        }
+                        else
+                        {
+                            xmle.nodeValue = apidata.BodyData[i].Find(t => t.U8FieldName.ToLower() == strFactoryCode).U8FieldValue;
+                        }
+                    }
                 }
+
                 #endregion
 
                 #region 可用量
@@ -215,7 +237,6 @@ namespace U8.Interface.Bus.ApiService.BLL
                 }
                 #endregion
 
-
                 ubOrder.AssignNormalValue("domHead", xmlHead);
                 ubOrder.AssignNormalValue("domBody", xmlBody);
                 
@@ -232,8 +253,7 @@ namespace U8.Interface.Bus.ApiService.BLL
             ClearUATask(bd);
             //if (!DAL.Common.SetCreateDate(bd, dr.VouchIdRet))
             //    U8.Interface.Bus.Log.WriteWinLog("设置单据制单时间失败,Cvouchertype:" + bd.Synergismlogdt.Cvouchertype + ";VouchIdRet:" + dr.VouchIdRet + ".");
-
-
+ 
             System.Diagnostics.Trace.WriteLine("   end MakeVouch     ");  
 
             return dr;
@@ -302,6 +322,9 @@ namespace U8.Interface.Bus.ApiService.BLL
                 foreach (Model.U8NameValue unv in lunv)
                 {
                     string fieldName = unv.U8FieldName.ToLower();
+ 
+                    //工厂编码特殊处理，解决部分环境BO不支持cfactorycode问题
+                    if (fieldName == "cfactorycode") continue;
 
                     if (unv.U8FieldName == "bgsp" && domBody.CardNumber == "U870_TRANS_0303")
                     {
